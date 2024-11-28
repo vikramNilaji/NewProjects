@@ -1,4 +1,4 @@
-const Data = () => {
+// const Data = () => {
   const data = [
     {
       id: 1,
@@ -27,19 +27,19 @@ const Data = () => {
     },
   ];
 
-  return (
-    <>
-      {data.map((value, index) => {
-        return (
-          <div key={index}>
-            <h1>{value.id}</h1>
-            <h1>{value.question}</h1>
-            <h1>{value.answer}</h1>
-          </div>
-        );
-      })}
-    </>
-  );
-};
+//   return (
+//     <>
+//       {data.map((value, index) => {
+//         return (
+//           <div key={index}>
+//             <h1>{value.id}</h1>
+//             <h1>{value.question}</h1>
+//             <h1>{value.answer}</h1>
+//           </div>
+//         );
+//       })}
+//     </>
+//   );
+// };
 
-export default Data;
+export default data;
