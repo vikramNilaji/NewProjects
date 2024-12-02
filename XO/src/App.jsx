@@ -1,11 +1,11 @@
 import "./App.css";
-import Accordian from "./Component/Accordian";
+import Accordion from "./Component/Accordion";
 
 
 function App() {
   return (
     <>
-      <Accordian />
+      <Accordion />
     
       <h1>Hello WOrld</h1>
     </>
