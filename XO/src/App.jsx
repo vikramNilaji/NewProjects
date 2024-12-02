@@ -7,7 +7,6 @@ function App() {
     <>
       <Accordion />
     
-      <h1>Hello WOrld</h1>
     </>
   );
 }
