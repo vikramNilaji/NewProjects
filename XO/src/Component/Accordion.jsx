@@ -16,7 +16,7 @@ const Accordion = () => {
             <h1 className="background">{dataItem.question}</h1>
 
             <h1 onClick={() => handleAnswer(dataItem.id)}>
-              +{selected === dataItem.id ? <div>{dataItem.answer} </div> : null}
+              + {selected === dataItem.id ? <div>{dataItem.answer} </div> : null}
             </h1>
           </div>
         );
