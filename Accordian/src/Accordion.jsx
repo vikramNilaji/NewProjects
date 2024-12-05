@@ -3,12 +3,16 @@ import { useState } from "react";
 
 const Accordion = () => {
   const [dataId,setDataId]=useState(null)
+
+  const[enableMultiSelection,setEnableMultiSelection]=useState()
   function handleButton(Item) {
     console.log(Item);
     setDataId(Item === dataId ?  null : Item)
   }
   return (
     <>
+    <button style={{height: "100px" ,width: "200px"}}>EnableMultiSelection</button>
+
       {data.map((dataItems, index) => {
         return (
           <div key={index}>
