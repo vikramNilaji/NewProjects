@@ -10,17 +10,20 @@ const Accordion = () => {
 
   return (
     <>
+    adadada
       {data.map((dataItem, index) => {
         return (
           <div key={index} >
             <h1 className="background">{dataItem.question}</h1>
-
+            
             <h1 onClick={() => handleAnswer(dataItem.id)}>
               + {selected === dataItem.id ? <div>{dataItem.answer} </div> : null}
             </h1>
           </div>
+         
         );
       })}
+      
     </>
   );
 };
