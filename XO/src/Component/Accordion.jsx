@@ -10,7 +10,6 @@ const Accordion = () => {
 
   return (
     <>
-    adadada
       {data.map((dataItem, index) => {
         return (
           <div key={index} >
