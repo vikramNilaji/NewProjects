@@ -7,7 +7,7 @@ const Accordion = () => {
   const[enableMultiSelection,setEnableMultiSelection]=useState(false)
   const[multiple,setMultiple]=useState([])
   function handleSingleSelection(Item) {
-    console.log(Item);
+    console.log(Item); 
     setDataId(Item === dataId ?  null : Item)
   }
 
@@ -15,8 +15,14 @@ const Accordion = () => {
     let copyMultiple=[...multiple]
      const findIndexOfCurrentId=copyMultiple.indexOf(dataId)  
      console.log(findIndexOfCurrentId);
-     if()
+     if(findIndexOfCurrentId === -1) copyMultiple.push(dataId)
+      else copyMultiple.splice(findIndexOfCurrentId,1)
+    setMultiple(copyMultiple)
+
+    
   }
+
+  console.log()
   return (
     <>
     <button onClick={()=> setEnableMultiSelection(!enableMultiSelection)} style={{height: "60px" ,width: "200px"}}  >EnableMultiSelection</button>
