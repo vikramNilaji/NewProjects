@@ -21,11 +21,9 @@ const RandomColor = () => {
   const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
 
     hex.sort(() => Math.random() - 0.5);
+    console.log(hex)
 
-
-
-  // Function to generate an array of 5 random items from the hex array
-  function getRandomHexItems() {
+ function getRandomHexItems() {
       let randomItems = [];
       for (let i = 0; i < 6; i++) {
           const randomIndex = Math.floor(Math.random() * hex.length);
