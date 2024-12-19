@@ -3,7 +3,11 @@ import { useState } from "react";
 const RandomHexNumber = () => {
   const [color, setColor] = useState("#ffffff")
   const Hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+  
+
+
   const RandomItems = ['#']
+  console.log(Hex)
 
   function HandleColorButton() {
     for (let i = 0; i < 6; i++) {
