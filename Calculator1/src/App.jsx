@@ -22,16 +22,19 @@ function App() {
     //   ))}
     // </>
 
-
     <>
-    
-    {Numbers.map((Number1,index1)=>(
-
-       <div className="Content"><ul key={index1}> {Number1.map((Number2,index2)=>( <li key={index2}>{Number2}</li> ))} </ul></div> 
-
-
-    ))}
-    
+    <div className="Input"><input type="text"/></div>
+    <div className="Main">
+      {Numbers.map((Number1, index1) => (
+        <div key={index1} className="Content">
+          <ul>            
+            {Number1.map((Number2, index2) => (
+              <li key={index2}>{Number2}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      </div>
     </>
   );
 }
