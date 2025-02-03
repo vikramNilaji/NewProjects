@@ -10,9 +10,18 @@ body {
   background-color: white;
   width: 348px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 1px;
   font-size: larger;
-  border: none;
+  border-style:none;
+   
+  
+}
+input:focus{
+  border-right-style: hidden;
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style:dashed;
+  outline: 0;
 }
 .Main {
   background-color: #fa345e;
@@ -21,6 +30,7 @@ body {
 .Content {
   border: 3px solid red;
   border-radius: 1rem;
+  
 }
 .Content ul {
   display: flex;

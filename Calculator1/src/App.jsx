@@ -13,7 +13,7 @@ const App = () => {
     <>
       
       <h1 className="Content">
-      <div className="Input"><input type="text" /></div>
+      <div className="Input"><input type="text" placeholder="type here" /></div>
         {Numbers.map((Elements, index) => (
           <ul key={index}>
             {Elements.map((Indices, index2) => (
