@@ -9,15 +9,20 @@ const App = () => {
     ["X", "/", "%", "="]
   ];
 
+   const [text,setText]=useState("");
+  function handleInput(textContent) {
+    setText((prevText) => prevText + textContent);
+  }
+
   return (
     <>
       
       <h1 className="Content">
-      <div className="Input"><input type="text" placeholder="type here" /></div>
+      <div className="Input"><input type="text" value={text} placeholder="type here" /></div>
         {Numbers.map((Elements, index) => (
           <ul key={index}>
             {Elements.map((Indices, index2) => (
-              <li>{Indices}</li>
+              <li key={index2} onClick={() => handleInput(Indices.toString())}>{Indices}</li>
             ))}
           </ul>
         ))}

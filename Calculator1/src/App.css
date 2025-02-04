@@ -10,9 +10,10 @@ body {
   background-color: white;
   width: 348px;
   height: 50px;
-  border-radius: 1px;
-  font-size: larger;
+  border-radius: 1rem;
+  font-size: smaller;
   border-style:none;
+  color: black;
    
   
 }
@@ -22,6 +23,7 @@ input:focus{
   border-left-style: hidden;
   border-bottom-style:dashed;
   outline: 0;
+  border-radius: 1rem;
 }
 .Main {
   background-color: #fa345e;
