@@ -25,16 +25,6 @@ function App() {
   ];
 
   return (
-    // <>
-    //   {Numbers.map((Num, rowIndex) => (
-    //     <ul key={rowIndex}>
-    //       {Num.map((num, colIndex) => (
-    //         <li key={colIndex}>{num}</li>
-    //       ))}
-    //     </ul>
-    //   ))}
-    // </>
-
     <>
     <div className="Input" value={text} onChange={HandleInput()}><input type="text"/></div>
     <div className="Main">
