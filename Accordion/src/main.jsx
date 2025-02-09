@@ -7,7 +7,7 @@ import Accordion1 from './Accordion1.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App/> */}
-    {/* <Accordion/> */}
-    <Accordion1/>
+    <Accordion/>
+    {/* <Accordion1/> */}
   </StrictMode>,
 )
