@@ -1,43 +1,35 @@
 
-
+import { useEffect } from 'react'
 import './App.css'
+import { useState } from 'react'
 
-function App() {
-let promise1 =new Promise((resolve,reject)=> {
-  setTimeout(()=>{
-
-    console.log("Good Morning1")
-    resolve(true)
-  },4000) 
-  
-});
+function App( {url,limit}) {
 
 
-let promise2=new Promise((resolve,reject)=>{
-  setTimeout(()=>{
-    alert("Try Again")
-    reject(new Error("Error Occurred"))
-  },3000)
-  
-})
+  const [count,setCount]=useState(0)
 
-promise1
-    .then((value) => {
-      console.log(value);
-      let promise3=  new Promise((resolve) => {
-        setTimeout(() => {
-          console.log("Learning with Good Mood")
-          resolve("Great, we are done");
-        }, 2000); 
-      }); promise3.then((message) => console.log(message)) 
-    })
-    
+ const [images.setImages]=useState([])
+ const [currentSlide,setCurrentSlide]=useState(0)
+ const[errorMsg,setErrorMsg]=useState(null)
 
-  promise2.catch((error) => console.log("There is some error in fetching data"));
+ async function fetchImages(getUrl){
+
+  try{
+
+    const response =await
+  }
+ }
+
+
+
   return (
     <>
+
+
+    <h1>{count}</h1>
+
+    <button onClick={Increment}>Click Here</button>
     
-       {/* {console.log(promise1,promise2,p3)} */}
     </>
   )
 }
