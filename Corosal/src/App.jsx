@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
@@ -50,4 +51,15 @@ if (errorMsg === null) {
 return (<div className="container"></div>);
 
 }
+=======
+import "./App.css";
+
+function App() {
+  return ( <>
+           Hi
+
+  </>
+)}
+
+>>>>>>> Stashed changes
 export default App;
