@@ -1,37 +1,53 @@
+import { useEffect } from "react";
+import "./App.css";
+import { useState } from "react";
 
-import { useEffect } from 'react'
-import './App.css'
-import { useState } from 'react'
+const  App=({url} ,limit = 5, page = 2) =>{
+  const [count, setCount] = useState(0);
 
-function App( {url,limit}) {
+  const [images, setImages] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  async function fetchImages(getUrl) {
+    try {
+      const response = await fetch(
+        ` ${getUrl} ? page=${page} & limit=${limit}`
+      );
+      const data = await response.json();
 
-  const [count,setCount]=useState(0)
-
- const [images.setImages]=useState([])
- const [currentSlide,setCurrentSlide]=useState(0)
- const[errorMsg,setErrorMsg]=useState(null)
-
- async function fetchImages(getUrl){
-
-  try{
-
-    const response =await
+      if (data) {
+        setImages(data);
+        setLoading(flase);
+      }
+    } catch (e) {
+      setErrorMsg(e.message);
+      setLoading(false);
+    }
   }
- }
 
 
+useEffect(
+  () => {
+    if (url !== "") fetchImages(url);
+  },
+  [url]
+);
 
-  return (
-    <>
+console.log(images);
 
-
-    <h1>{count}</h1>
-
-    <button onClick={Increment}>Click Here</button>
-    
-    </>
-  )
+if (loading) {
+  <div>Loading data ! Pleas wait</div>;
 }
 
-export default App
+if (errorMsg === null) {
+  <div>
+    error occurred ! {errorMsg}
+  </div>;
+}
+
+return (<div className="container"></div>);
+
+}
+export default App;
