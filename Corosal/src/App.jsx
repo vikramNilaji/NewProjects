@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 import { useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const  App=({url} ,limit = 5, page = 2) =>{
 
       if (data) {
         setImages(data);
-        setLoading(flase);
+        setLoading(false);
       }
     } catch (e) {
       setErrorMsg(e.message);
@@ -48,18 +48,16 @@ if (errorMsg === null) {
   </div>;
 }
 
-return (<div className="container"></div>);
+ <div className="container"></div>;
 
 }
-=======
-import "./App.css";
 
-function App() {
+
   return ( <>
-           Hi
+          
 
   </>
-)}
+)
 
->>>>>>> Stashed changes
+
 export default App;
