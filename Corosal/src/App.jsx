@@ -9,82 +9,62 @@ export default function App({ url, limit = 5, page = 1 }) {
   const [loading, setLoading] = useState(false);
 
   async function fetchImages(getUrl) {
+    if (!getUrl) return;
+
     try {
       setLoading(true);
+      setErrorMsg(null);
 
       const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
-      const data = await response.json();
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-      if (data) {
-        setImages(data);
-        setLoading(false);
-      }
+      const data = await response.json();
+      setImages(data);
+      setCurrentSlide(0); // Reset slide index when new images load
     } catch (e) {
       setErrorMsg(e.message);
+    } finally {
       setLoading(false);
     }
   }
 
   function handlePrevious() {
-    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
+    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }
 
   function handleNext() {
-    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+    setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }
 
   useEffect(() => {
-    if (url !== "") fetchImages(url);
-  }, [url]);
+    fetchImages(url);
+  }, [url, page, limit]);
 
-  console.log(images);
-
-  if (loading) {
-    return <div>Loading data ! Please wait</div>;
-  }
-
-  if (errorMsg !== null) {
-    return <div>Error occured ! {errorMsg}</div>;
-  }
+  if (loading) return <div>Loading data! Please wait...</div>;
+  if (errorMsg) return <div>Error occurred! {errorMsg}</div>;
+  if (!images.length) return <div>No images available</div>;
 
   return (
     <div className="container">
-      <BsArrowLeftCircleFill
-        onClick={handlePrevious}
-        className="arrow arrow-left"
+      <BsArrowLeftCircleFill onClick={handlePrevious} className="arrow arrow-left" />
+
+      <img
+        key={images[currentSlide]?.id}
+        alt="slide"
+        src={images[currentSlide]?.download_url}
+        className="current-image"
       />
-      {images && images.length
-        ? images.map((imageItem, index) => (
-            <img
-              key={imageItem.id}
-              alt={imageItem.download_url}
-              src={imageItem.download_url}
-              className={
-                currentSlide === index
-                  ? "current-image"
-                  : "current-image hide-current-image"
-              }
-            />
-          ))
-        : null}
-      <BsArrowRightCircleFill
-        onClick={handleNext}
-        className="arrow arrow-right"
-      />
+
+      <BsArrowRightCircleFill onClick={handleNext} className="arrow arrow-right" />
+
       <span className="circle-indicators">
-        {images && images.length
-          ? images.map((_, index) => (
-              <button
-                key={index}
-                className={
-                  currentSlide === index
-                    ? "current-indicator"
-                    : "current-indicator inactive-indicator"
-                }
-                onClick={() => setCurrentSlide(index)}
-              ></button>
-            ))
-          : null}
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={currentSlide === index ? "current-indicator" : "current-indicator inactive-indicator"}
+            onClick={() => setCurrentSlide(index)}
+          ></button>
+        ))}
       </span>
     </div>
   );
