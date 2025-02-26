@@ -4,44 +4,41 @@ const TryCatch = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  // Async function to fetch data
   const fetchData = async () => {
     try {
       const response = await fetch("https://jsonplaceholder.typicode.com/users");
-
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`its Error , Status : ${response.status}`);
+      } else {
+        const result = await response.json();
+        setData(result);
       }
-
-      const result = await response.json();
-      setData(result); // Store API data in state
     } catch (e) {
-      setError(e.message); // Store error message
+      setError(e.message);
     }
   };
 
-  // Call fetchData when the component loads
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div>
-      <h2>User List</h2>
+    <h2>User List</h2>
       {error ? (
-        <p style={{ color: "red" }}>Error: {error}</p> // Show error message
+        <h3> Error : {error}</h3>
       ) : data ? (
         <ul>
+          {" "}
           {data.map((user) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
+            <li key={user.id}> {user.name} </li>
+          ))}{" "}
         </ul>
       ) : (
-        <p>Loading...</p> // Show loading message until data is fetched
+        <p> Loading...</p>
       )}
     </div>
   );
 };
 
 export default TryCatch;
-
