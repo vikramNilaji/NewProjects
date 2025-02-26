@@ -22,7 +22,7 @@ export default function App({ url, limit = 5, page = 1 }) {
       setImages(data);
       setCurrentSlide(0); // Reset slide index when new images load
     } catch (e) {
-      setErrorMsg(e.message);
+      setErrorMsg(e.message); 
     } finally {
       setLoading(false);
     }

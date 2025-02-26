@@ -1,0 +1,14 @@
+funtion Add(a,b){
+
+  try{
+      return a+b
+  }
+
+  catch(e){
+    return (e.message)
+  }
+
+
+}
+
+console.log(Add(4,5))
