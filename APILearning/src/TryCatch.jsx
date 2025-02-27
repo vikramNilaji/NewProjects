@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
 
 const TryCatch = () => {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
 
-  const fetchData = async () => {
+  const FetchData = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+
     try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users");
       if (!response.ok) {
-        throw new Error(`its Error , Status : ${response.status}`);
+        throw new Error(` there is an Error : ${response.status}`)
       } else {
-        const result = await response.json();
-        setData(result);
+        const result = await response.json()
+
+        setData(result)
       }
     } catch (e) {
-      setError(e.message);
+      setError(e.message)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    FetchData()
+  }, [])
 
   return (
     <div>
-    <h2>User List</h2>
-      {error ? (
-        <h3> Error : {error}</h3>
-      ) : data ? (
-        <ul>
-          {" "}
-          {data.map((user) => (
-            <li key={user.id}> {user.name} </li>
-          ))}{" "}
-        </ul>
-      ) : (
-        <p> Loading...</p>
-      )}
+      {error
+        ? <p>
+          {' '}Error :{error}
+        </p>
+        : data
+          ? <ul>
+            {' '}{data.map(users =>
+              <li key={users.id}>
+                {users.name}
+              </li>
+              )}
+          </ul>
+          : <p> Loading...</p>}
     </div>
-  );
-};
+  )
+}
 
-export default TryCatch;
+export default TryCatch
