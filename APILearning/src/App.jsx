@@ -44,7 +44,7 @@ const App = () => {
           </ul>
           : <p>Loading... Please wait...</p>}
 
-      <ImageSlider />
+      <ImageSlider url={"https://picsum.photos/v2/list"} limit={10} />
     </div>
   )
 }

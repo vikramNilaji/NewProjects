@@ -6,9 +6,9 @@ const ImageSlider = (url, limit) => {
   const [errorMsg, setErrorMsg] = useState(null)
   const [loading, seLoading] = useState()
 
-  const fetchImages = async () => {
+  const fetchImages = async (getUrl) => {
     try {
-      const response = fetch('dummyjson.com/image')
+      const response = fetch(getUrl)
       const data = await response.json()
     } catch (e) {
       setErrorMsg(e.message)
