@@ -7,15 +7,11 @@ function App() {
     return Math.floor(Math.random()*length)
   }
 
+  // for(let i=2;i<21;i+2){
 
- 
-  let HexColor=[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
-  let Hex= "#"
-  for(let i=0;i<4;i++){
-   Hex = Hex + HexColor[RandomColorCode(HexColor.length)]
-   }
+  //   console.log(i)
+  // }
 
-   console.log(Hex)
 
   
   return (
