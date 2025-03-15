@@ -1,29 +1,33 @@
 import { useState } from "react";
 import "./App.css";
 import Data from "./Data";
+import { useEffect } from "react";
 
 function App() {
   const [selectedId, setSelectedId] = useState([]);
   function SingleButtonHandle(ItemId) {
-    setSelectedId(selectedId.includes(ItemId) ? null : [ItemId]);
-    console.log(selectedId)
+    setSelectedId(selectedId.includes(ItemId) ? [] : [ItemId]);
+    console.log(setSelectedId);
   }
 
   function MultiSelectionHandle(ItemId) {
-    if (selectedId.includes(ItemId)){
+    if (selectedId.includes(ItemId)) {
       setSelectedId(selectedId.filter((id) => id !== ItemId));
-    console.log(selectedId);
+      console.log(selectedId);
+    } else {
+      setSelectedId([...selectedId, ItemId]);
+      console.log(setSelectedId);
+    }
   }
-  else{
-    setSelectedId([...selectedId,ItemId])
-    console.log( selectedId)
-  }
-}
 
   const [SingleSelection, setSingleSelection] = useState(true);
   function SelectionHandler() {
     setSingleSelection(!SingleSelection);
   }
+
+  // useEffect(() => {
+  //   console.log("Updated selectedId:", selectedId);
+  // }, [selectedId]);
 
   return (
     <>
