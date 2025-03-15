@@ -6,18 +6,13 @@ function App() {
     return Math.floor(Math.random() * length);
   }
 
-  // }
-  let num = [3000, 5, 2, 3491, 342, 900023, 232, 232, 3000, 2, 5];
-  let a = 3000;
-  let b = [];
-  for (let i = 0; i < num.length; i++) {
-    if (num[i] === a) {
-      console.log(num[i]);
-      b.push(num[i]);
-      console.log(b);
-      console.log(b.length);
-    }
+  let hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+  let hexColor = "#";
+
+  for (let i = 0; i <= 5; i++) {
+    hexColor = hexColor + hex[RandomColorCode(hex.length)];
   }
+  console.log(hexColor)
 
   return <></>;
 }
