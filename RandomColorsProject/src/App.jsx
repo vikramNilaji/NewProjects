@@ -63,15 +63,22 @@ const App = () => {
   function RandomRGBColor() {
     return Math.floor(Math.random() * 256);
   }
-
+ 
+  
+  function HexC(){
+    let HexColor = "#";
   let Hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-  let HexColor = "#";
-  let RGBColor = `rgb(${RandomRGBColor()},${RandomRGBColor()},${RandomRGBColor()})`;
-
   for (let i = 0; i <= 5; i++) {
     HexColor = HexColor + Hex[RandomNumberSelector(Hex.length)];
   }
+    return HexColor
+}
 
+
+function RgbC(){
+let RGBColor = `rgb(${RandomRGBColor()},${RandomRGBColor()},${RandomRGBColor()})`;
+ return RGBColor
+}
   const [color, setColor] = useState("#00000");
   const [isHex, setIsHex] = useState(true);
   function HexColorButton() {
@@ -83,9 +90,9 @@ const App = () => {
 
   function ChangeColorButton() {
     if (isHex) {
-      setColor(HexColor);
+      setColor(HexC());
     } else {
-      setColor(RGBColor);
+      setColor(RgbC());
     }
   }
 
