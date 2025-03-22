@@ -36,11 +36,34 @@ import { FaStar } from "react-icons/fa";
 
 // export default App;
 
+import { useState } from "react";
+
 const App = () => {
+  const [rating, setRating] = useState(0);
+  const [number, setNumber] = useState(0);
+
+  function HoverButton(currentIndex) {
+    setRating(currentIndex);
+    console.log(currentIndex);
+  }
+
+  function ClickButton(currentIndex) {
+    setRating(currentIndex);
+    console.log(currentIndex);
+  }
+
+  function LeaveRating(){
+    setNumber(0)
+    console.log(rating)
+   
+  }
+
   return (
     <>
       {[...Array(5)].map((_, index) => {
-        return  (<FaStar> </FaStar>);
+        index=index+1
+        return <FaStar key={index} size={50}
+        onClick={()=>ClickButton(index)}  onMouseEnter={()=>HoverButton(index)} style={{color: `${index <= rating || number ? "red" :"black"}` }}></FaStar>;
       })}
     </>
   );
