@@ -1,6 +1,7 @@
 // import { useState } from "react";
+import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-// import "./App.css";
+import "./App.css";
 
 // function App() {
 //   const NoOfStars = 10;
@@ -37,10 +38,37 @@ import { FaStar } from "react-icons/fa";
 // export default App;
 
 const App = () => {
+  const [rating, setRating] = useState(0);
+  function ClickHandler(currentIndex) {
+    setRating(currentIndex);
+    console.log(currentIndex);
+  }
+
+  function HoverHandler(currentIndex) {
+    setRating(currentIndex);
+    console.log(currentIndex);
+  }
+
+  function LeaveHandler(currentIndex) {
+    setRating(currentIndex)
+  }
+
   return (
     <>
       {[...Array(5)].map((_, index) => {
-        return  (<FaStar> </FaStar>);
+        index = index + 1;
+        return (
+          <FaStar
+            key={index}
+            size={50}
+            onClick={() => ClickHandler(index)}
+            onMouseEnter={() => HoverHandler(index)}
+            onMouseLeave={()=>LeaveHandler(index)}
+            className={index <= rating ? "active" : "inactive"}
+          >
+            {" "}
+          </FaStar>
+        );
       })}
     </>
   );
