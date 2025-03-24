@@ -33,7 +33,7 @@ const StarRating = ({ Numbers = 5 }) => {
           <FaStar
             key={index}
             size={50}
-            className={index <= (hover||rating)? 'active' : 'inactive'}
+            className={index <= (hover || rating) ? 'active' : 'inactive'}
             onClick={() => OnclickHandle(index)}
             onMouseEnter={() => OnMouseEnterHandle(index)}
             onMouseLeave={() => OnMouseLeaveHandle()}
