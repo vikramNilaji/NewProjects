@@ -6,8 +6,8 @@ import { useState } from "react";
 const StarRating = ({ Numbers = 5 }) => {
 
 
- const [hover,setHover]=useState(0)
- const[rating,setRating]=useState(0)
+  const [hover, setHover] = useState(0)
+  const [rating, setRating] = useState(0)
 
 
 
@@ -33,7 +33,7 @@ const StarRating = ({ Numbers = 5 }) => {
           <FaStar
             key={index}
             size={50}
-            className={index <= (hover||rating)? 'active' : 'inactive'}
+            className={index <= (hover || rating) ? 'active' : 'inactive'}
             onClick={() => OnclickHandle(index)}
             onMouseEnter={() => OnMouseEnterHandle(index)}
             onMouseLeave={() => OnMouseLeaveHandle()}
