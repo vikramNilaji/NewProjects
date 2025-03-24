@@ -6,7 +6,7 @@ import { useState } from "react";
 const StarRating = ({ Numbers = 5 }) => {
 
 
- const[rating,setRating]=useState(0)
+  const [hover, setHover] = useState(0)
   const [rating, setRating] = useState(0)
 
 
