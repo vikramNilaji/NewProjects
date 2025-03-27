@@ -41,7 +41,8 @@ const ImageSlider1 = ({ url, limit = 5, page = 1 }) => {
 
          <BsArrowLeftCircleFill/>
 id
-         {images.images.length ? images.map((imageItem , imageItem.id)=>{ return ( <img key={imageItem.download_url} src={imageItem.download_url}/>)}) : null}
+         {images.images.length ? images.map((imageItem , imageItem.id)=>
+         { return ( <img key={imageItem.download_url} src={imageItem.download_url}/>)}) : null}
     
 
 
