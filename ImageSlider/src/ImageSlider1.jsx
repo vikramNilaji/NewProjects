@@ -22,6 +22,14 @@ const ImageSlider1 = ({ url, limit = 5, page = 1 }) => {
       setLoading(false);
     }
   };
+  function handlePrevious() {
+    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
+  }
+
+  function handleNext() {
+    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+  }
+
   useEffect(() => {
     if (url !== 0) {
       FetchImages(url);
@@ -37,16 +45,46 @@ const ImageSlider1 = ({ url, limit = 5, page = 1 }) => {
   } else {
     return (
       <div className="container">
-        <h1>Hi</h1>
+        <BsArrowLeftCircleFill
+          onClick={handlePrevious}
+          className=" arrow arrow-left"
+        />
 
-         <BsArrowLeftCircleFill/>
-id
-         {images.images.length ? images.map((imageItem , imageItem.id)=>
-         { return ( <img key={imageItem.download_url} src={imageItem.download_url}/>)}) : null}
-    
-
-
-    <BsArrowRightCircleFill/> 
+        {images && images.length
+          ? images.map((imageItem, index) => {
+              return (
+                <img
+                  key={imageItem.id}
+                  src={imageItem.download_url}
+                  alt={imageItem.download_url}
+                  className={
+                    currentSlide === index
+                      ? "current-image"
+                      : " hide-current-image"
+                  }
+                />
+              );
+            })
+          : null}
+        <BsArrowRightCircleFill
+          onClick={handleNext}
+          className="arrow arrow-right"
+        />
+        <span className="circle-indicators">
+          {images && images.length
+            ? images.map((_, index) => (
+                <button
+                  key={index}
+                  className={
+                    currentSlide === index
+                      ? "current-indicator"
+                      : "current-indicator inactive-indicator"
+                  }
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))
+            : null}
+        </span>
       </div>
     );
   }
