@@ -47,7 +47,7 @@ const ImageSlider3 = ({ url, limit=5, page=1 }) => {
     </div>;
 
   }
-  
+   
 };
 
 export default ImageSlider3;
