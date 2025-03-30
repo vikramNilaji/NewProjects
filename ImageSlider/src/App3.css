@@ -1,10 +1,13 @@
 .container1 {
-    position: relative;
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
+  flex-direction: row;
+  height: 500px;
   width: 600px;
-  height: 450px;
+  
+
   }
   
   .current-slide1 {
