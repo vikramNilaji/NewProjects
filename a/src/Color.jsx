@@ -48,9 +48,9 @@ const Color = () => {
     a = a + ColorCharacters[RandomSelection(ColorCharacters.length)];
   }
 
-  let b = `rgb(${RandomSelection1(256)},${RandomSelection1(
-    256
-  )},${RandomSelection1(256)})`;
+  let b = `rgb(${RandomSelection1()},${RandomSelection1(
+    
+  )},${RandomSelection1()})`;
 
   console.log(a);
 
