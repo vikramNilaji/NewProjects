@@ -3,11 +3,10 @@ import React from "react";
 import { useState } from "react";
 
 const Accordion = () => {
+  return;
+  <div>
 
-
-  return <div>
-
-
+    
   </div>;
 };
 
