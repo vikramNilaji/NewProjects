@@ -1,6 +1,7 @@
 
 import Accordion from "./Accordion"
 import Color from "./Color";
+import Calculator from "../Calculator";
 
 function App() {
  
@@ -8,6 +9,7 @@ function App() {
     <>
      <Accordion/>
      <Color/>
+     <Calculator/>
     </>
   );
 }
