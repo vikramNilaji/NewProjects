@@ -1,5 +1,35 @@
-.StarColor :hover{
+.Box{
+  display: flex;
+  flex-direction: column;
+  background-color: #FF22E2;
+  height: 40rem;
+  width: 20rem;
+  align-items: center;
+  justify-content: center;
+}
 
- color: red;
+.input{
+  width: 97%;
+  height: 60px;
+  border-radius: 10px;
 
+}
+
+.Container{
+  height: 100px;
+  width: 100px;
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin-left: -120px;
+
+  
+  /* background-color: #345fcd; */
+}
+
+.Container li {
+  /* background-color: #3fcdee; */
+  height: 5rem;
+  width: 10rem;
+  font-size: 40px;
 }
