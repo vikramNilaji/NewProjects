@@ -48,4 +48,4 @@ const Calculator = () => {
   );
 };
 
-export default Calculator;
+export default Calc  ulator;
