@@ -51,17 +51,53 @@ import "./src/App.css";
 // export default Calculator;
 
 const Calculator = () => {
-  return <>
-
-  <div className="Box">
-    <input className="input"/>
-    
-
-  </div>
-
-
+  const [text, setText] = useState("");
   
-  </>;
-}
 
-export default Calculator
+  function TextHandle(event) {
+    setText(event.target.value);
+  }
+
+  function ButtonsHandler(event1) {
+    setText((prev) => prev + event1.target.innerHTML);
+  }
+
+  let Characters = [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, "/", "*"],
+    ["-", "x", "+", "C"],
+  ];
+
+ 
+    
+  return (
+    <>
+      <div className="Box">
+        <input
+          className="input"
+          type="text"
+          value={text}
+          onChange={TextHandle}
+        />
+
+     
+        {Characters.map((items, index) => {
+          return (
+            <ul className="Container" key={index}>
+              {items.map((items1, index1) => {
+                return (
+                  <li onClick={ButtonsHandler} key={index1}>
+                    {items1}
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default Calculator;
