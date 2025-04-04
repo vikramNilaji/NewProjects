@@ -1,5 +1,5 @@
-// import React, { useState } from "react";
-// import "./src/App.css";
+import React, { useState } from "react";
+import "./src/App.css";
 
 // const Calculator = () => {
 //   const characters = [
@@ -51,7 +51,17 @@
 // export default Calculator;
 
 const Calculator = () => {
-  return <></>;
-};
+  return <>
 
-export default Calculator;
+  <div className="Box">
+    <input className="input"/>
+    
+
+  </div>
+
+
+  
+  </>;
+}
+
+export default Calculator
