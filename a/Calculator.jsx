@@ -1,51 +1,36 @@
 import React, { useState } from "react";
-import "./src/App.css";
+import { evaluate } from "mathjs";
 
 const Calculator = () => {
-  const characters = [
-    [1, 2, 3, "+"],
-    [4, 5, 6, "-"],
-    [7, 8, 9, "x"],
-    ["/", "%", "=", "C"],
-  ];
-
+  const Numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "+", "-", "/", "C", "="];
   const [text, setText] = useState("");
-  // const [count,setCount]= useState(0)
 
-  function inputHandle(e) {
-    setText(e.target.value);
-  }
+  function EnterText(event) {
+    const newValue = event.target.innerHTML;
 
-  function calcHandle(event) {
-    setText((prev) => prev + event.target.innerHTML);
-    // setText((prev) => prev + event.target.innerHTML);
-    // setCount((prev1)=>prev1+1)
-    // setCount((prev1)=>prev1+1)
+    if (newValue === "=") {
+      try {
+        setText(evaluate(text).toString());
+      } catch {
+        setText("error");
+      }
+    } else if (newValue === "C") {
+      setText("");
+    } else {
+      setText((prev) => prev + newValue);
+    }
   }
 
   return (
-    <div className="Box">
-{/* 
-    <h1>{count}</h1>
-    <button onClick={calcHandle}>Click</button> */}
-      <input
-        onChange={inputHandle}
-        value={text}
-        className="input"
-        type="text"
-      />
-
-      {characters.map((items, index) => (
-        <ul className="Container" key={index}>
-          {items.map((dataItem, idx) => (
-            <li onClick={calcHandle} key={idx}>
-              {dataItem}
-            </li>
-          ))}
-        </ul>
+    <div>
+      <input type="text" value={text}  />
+      {Numbers.map((item, index) => (
+        <button onClick={EnterText} key={index}>
+          {item}
+        </button>
       ))}
     </div>
   );
 };
 
-export default Calc  ulator;
+export default Calculator;

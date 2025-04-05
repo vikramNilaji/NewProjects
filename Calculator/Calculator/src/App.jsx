@@ -20,7 +20,25 @@ const NewCalculator = () => {
     }
   }
 
-  const Numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "*", "/", "-", "+", "=", "C", "."];
+  const Numbers = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    0,
+    "*",
+    "/",
+    "-",
+    "+",
+    "=",
+    "C",
+    ".",
+  ];
 
   function handleOnChange(e) {
     setExpression(e.target.value);
@@ -39,7 +57,14 @@ const NewCalculator = () => {
           marginBottom: "10px",
         }}
       />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 50px)", gap: "10px", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 50px)",
+          gap: "10px",
+          justifyContent: "center",
+        }}
+      >
         {Numbers.map((num, index) => (
           <button
             key={index}
@@ -60,4 +85,3 @@ const NewCalculator = () => {
 };
 
 export default NewCalculator;
-
