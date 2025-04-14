@@ -49,7 +49,6 @@ const LoadMoreData = () => {
         </div>
 
         <div>
-
           <button className="button-container">Load More Products</button>
         </div>
       </div>
