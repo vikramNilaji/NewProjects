@@ -1,7 +1,16 @@
 let Data = [
-  { id: 1, question: "what is your name?", answer: "Vikram" },
-  { id: 2, question: "what is your fathers' name?", answer: "Chandrashekar" },
-  { id: 3, question: "what is your sirname?", answer: "Nilaji" },
+  {
+    Id: 1,
+    Question: "What is your name?",
+    Answer: "My name is Vikram Chandrashekar Nilaji",
+  },
+  {
+    Id: 2,
+    Question: "What is your father name?",
+    Answer: "Chandrashekar Bhimrao Nilaji",
+  },
+  { Id: 3, Question: "What is your Surname?", Answer: "Nilaji" },
 ];
+
 
 export default Data

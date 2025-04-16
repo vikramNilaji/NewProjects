@@ -3,6 +3,7 @@
 // import Color from "./Color";
 import Calculator from "../Calculator";
 import Calculator11 from "./Calculator11";
+import Acco from "./Acco"
 
 function App() {
  
@@ -11,7 +12,8 @@ function App() {
      {/* <Accordion/>
      <Color/> */}
      {/* <Calculator/> */}
-     <Calculator11/>
+     {/* <Calculator11/> */}
+     <Acco/>
     </>
   );
 }
