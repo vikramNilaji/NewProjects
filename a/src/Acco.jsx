@@ -1,28 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Data from "./Data.js";
-import { useState } from "react";
 
 const Acco = () => {
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState([]);
+  const [SingleSelection, setSingleSelection] = useState(false);
 
-  function HandleButton(currentId) {
-    setSelectedId(currentId);
-    console.log(currentId);
+  function SingleSelectionHandle(DataId) {
+    setSelectedId(selectedId.includes(DataId) ? [] : [DataId]);
+    console.log(DataId);
   }
 
+  function MultiSelectionHandle(DataId) {
+    if (selectedId.includes(DataId)) {
+      setSelectedId(selectedId.filter((id) => id !== DataId));
+    } else {
+      setSelectedId([DataId, ...selectedId]);
+    }
+  }
   return (
     <>
-      {Data.map((Items, id) => {
-        return (
-          <div key={id}>
-            <h2>{Items.Id}</h2>{" "}
-            <h2 onClick={() => HandleButton(Items.Id)}>{Items.Question}</h2>{" "}
-            {selectedId === Items.Id ? <h2>{Items.Answer}</h2> : null}
-          </div>
-        );
-      })}
+      <div>
+        {
+          <button onClick={() => setSingleSelection(!SingleSelection)}>
+            {SingleSelection ? "SingleSelection" : "MultiSelection"}
+          </button>
+        }
+        {Data.map((items, id) => {
+          return (
+            <div key={id}>
+             <h2>{items.Id}</h2>
+              <h2
+                onClick={
+                  SingleSelection
+                    ? () => MultiSelectionHandle(items.Id)
+                    : () => SingleSelectionHandle(items.Id)
+                }
+              >
+                {items.Question}
+              </h2>
+              {selectedId.includes(items.Id) ? <h2>{items.Answer}</h2> : null}
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
 
 export default Acco;
+
