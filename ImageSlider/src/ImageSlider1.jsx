@@ -90,4 +90,4 @@ const ImageSlider1 = ({ url, limit = 5, page = 1 }) => {
   }
 };
 
-export default ImageSlider1;
+export default ImageSlider1; 
