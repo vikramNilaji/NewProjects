@@ -4,6 +4,7 @@
 import Calculator from "../Calculator";
 import Calculator11 from "./Calculator11";
 import Acco from "./Acco"
+import ImageSlider from "./ImageSlider";
 
 function App() {
  
@@ -13,7 +14,11 @@ function App() {
      <Color/> */}
      {/* <Calculator/> */}
      {/* <Calculator11/> */}
-     <Acco/>
+     {/* <Acco/> */}
+     <ImageSlider 
+        url={"https://picsum.photos/v2/list/"}
+        page={"1"}
+        limit={"10"}/>
     </>
   );
 }
