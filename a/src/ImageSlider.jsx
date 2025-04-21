@@ -1,64 +1,77 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import "./App6.css";
 
-const ImageSlider = ({ url, limit=10, page=1 }) => {
+const ImageSlider = ({ url, page = 1, limit = 10 }) => {
+  const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [images, setImages] = useState([]);
 
-  async function FetchData(getUrl) {
+  const fetchData = async (getUrl) => {
     try {
-      setLoading(true)
-      let response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
-      let datas = await response.json();
-      console.log(datas);
+      setLoading(true);
+      setErrorMsg(null);
 
-      if(datas){
-        setImages(datas)
-        setLoading(false)
+      const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
+      const imageData = await response.json();
+
+      if (imageData) {
+        setImages(imageData);
       }
     } catch (error) {
-      console.log(error.message);
+      setErrorMsg(error.message);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    FetchData(url);
-  }, [url,page,limit]);
+    fetchData(url);
+  }, [url, page, limit]);
 
-  console.log(images)
+  if (loading) {
+    return <div>Loading... Please wait...</div>;
+  } else if (errorMsg) {
+    return <div>Got Error: {errorMsg}</div>;
+  } else {
+    return (
+      <div className="container">
+        {images && images.length ? (
+          images.map((imageItem, index) => {
+            return (
+              <img
+                key={index}
+                src={imageItem.download_url}
+                alt={`Image ${index + 1}`}
+                className={
+                  currentSlide === index
+                    ? "current-image"
+                    : "hide-current-image"
+                }
+              />
+            );
+          })
+        ) : (
+          <div>No Images Found</div>
+        )}
+        <div className={} >
+          {images && images.length
+            ? images.map((_, index) => {
+                return (
+                  <button
+                    className={
+                      currentSlide === index
+                        ? "circle-indicators"
+                        : "inactive-indicator"
+                    }
+                  ></button>
+                );
+              })
+            : null}
+        </div>
+      </div>
+    );
+  }
+};
 
-if (loading){
-  return <div> Loading... Please wait..</div>
-}
-
-else if(errorMsg){
-  return <div> Caught Error : {errorMsg}</div>
-}
-
-else{
-  return(
-
-    <div> {images.images.length ? ( images.map((imageItem,index)=>{ return (  )}))}</div>
-    
-    
-    
-  //   <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-  //   {images && images.length ? (
-  //     images.map((imageItem, index) => (
-  //       <img
-  //         key={imageItem.id}
-  //         alt={imageItem.download_url}
-  //         src={imageItem.download_url}
-  //         style={{ width: "200px", height: "auto", border: "1px solid #ccc" }}
-  //       />
-  //     ))
-  //   ) : null}
-  </div>
-  
-)
-}
-
-}
-
-export default ImageSlider
+export default ImageSlider;
