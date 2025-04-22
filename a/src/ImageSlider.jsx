@@ -1,3 +1,92 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import "./App6.css";
+
+const ImageSlider = ({ url, limit = 10, page = 1 }) => {
+  const [images, setImages] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  function RightHandle() {
+    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+  }
+
+  function LeftHandle() {
+    setCurrentSlide(currentSlide === 0 ? images.length : currentSlide - 1);
+  }
+
+  const FetchData = async (getUrl) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
+      const ImageData = await response.json();
+
+      if (ImageData) {
+        setLoading(false);
+        setImages(ImageData);
+      }
+    } catch (error) {
+      setLoading(false);
+      setErrorMsg(error.message);
+    }
+  };
+  console.log(images);
+
+  useEffect(() => {
+    FetchData(url);
+  }, [url, page, limit]);
+
+  if (loading) {
+    return <div> Loading.... Please wait</div>;
+  } else if (errorMsg) {
+    return <div> Error Occurred : {errorMsg} </div>;
+  } else {
+    return (
+      <>
+        <div className="container">
+          {images && images.length
+            ? images.map((imageitems, index) => {
+                return (
+                  <div>
+                    <img
+                      key={index + 1}
+                      src={imageitems.download_url}
+                      alt={imageitems.download_url}
+                      className={
+                        currentSlide === index
+                          ? "active-images"
+                          : "inactive-images"
+                      }
+                    />
+                  </div>
+                );
+              })
+            : null}
+
+          {images && images.length
+            ? images.map((_, index) => {
+                return (
+                  <button key={index} onClick={() => setCurrentSlide(index)}>
+                    {" "}
+                  </button>
+                );
+              })
+            : null}
+        </div>
+        <BsArrowLeftCircleFill onClick={LeftHandle} className="arrow-circle" />
+        <BsArrowRightCircleFill
+          onClick={RightHandle}
+          className="arrow-circle"
+        />
+      </>
+    );
+  }
+};
+
+export default ImageSlider;
+
 // import { useState, useEffect } from "react";
 // import "./App6.css";
 // import {BsArrowLeftCircleFill,BsArrowRightCircleFill}  from "react-icons/bs"
@@ -90,67 +179,63 @@
 
 // export default ImageSlider;
 
-import { useState } from "react";
-import { useEffect } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+// import { useState } from "react";
+// import { useEffect } from "react";
+// import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
-const ImageSlider = ({ url, page = 1, limit = 10 }) => {
-  const [images, setImages] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [errorMsg, setErrorMsg] = useState(null);
+// const ImageSlider = ({ url, page = 1, limit = 10 }) => {
+//   const [images, setImages] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [currentSlide, setCurrentSlide] = useState(0);
+//   const [errorMsg, setErrorMsg] = useState(null);
 
-  const FetchData = async (getUrl) => {
-    try {
-      setLoading(true);
-      const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
-      const ImageData = await response.json();
-      if (ImageData) {
-        setImages(ImageData);
-              }
-    } catch (error) {
-      setLoading(false);
-      setErrorMsg(error.message);
-    }
-  
-  };
+//   const FetchData = async (getUrl) => {
+//     try {
+//       setLoading(true);
+//       const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
+//       const ImageData = await response.json();
+//       if (ImageData) {
+//         setImages(ImageData);
+//               }
+//     } catch (error) {
+//       setLoading(false);
+//       setErrorMsg(error.message);
+//     }
 
-  useEffect(() => {
-    FetchData(url);
-  }, [url, limit, page]);
+//   };
 
-  if (loading) {
-    return <div> Loading... Please Wait...</div>;
-  } else if (errorMsg) {
-    return <div> Error Occurred : {errorMsg}</div>;
-  } else {
-    return (
-      <>
-        <BsArrowLeftCircleFill /> 
-        
-        {images && images.length > 0 ? (
-  images.map((ImageItem, index) => (
-    <img 
-      src={ImageItem.download_url} 
-      alt={ImageItem.download_url} 
-      key={index} 
-    />
-  ))
-) : (
-  <div>No images available</div>
-)}
+//   useEffect(() => {
+//     FetchData(url);
+//   }, [url, limit, page]);
 
-          
-          
-          
-        <BsArrowRightCircleFill />
-      </>
-    );
-  }
-};
+//   if (loading) {
+//     return <div> Loading... Please Wait...</div>;
+//   } else if (errorMsg) {
+//     return <div> Error Occurred : {errorMsg}</div>;
+//   } else {
+//     return (
+//       <>
+//         <BsArrowLeftCircleFill />
 
-export default ImageSlider;
+//         {images && images.length > 0 ? (
+//   images.map((ImageItem, index) => (
+//     <img
+//       src={ImageItem.download_url}
+//       alt={ImageItem.download_url}
+//       key={index}
+//     />
+//   ))
+// ) : (
+//   <div>No images available</div>
+// )}
 
+//         <BsArrowRightCircleFill />
+//       </>
+//     );
+//   }
+// };
+
+// export default ImageSlider;
 
 // import { useState, useEffect } from "react";
 // import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
@@ -188,7 +273,7 @@ export default ImageSlider;
 //     return (
 //       <div>
 //         <BsArrowLeftCircleFill />
-        
+
 //         {/* Render images only if images exist and have content */}
 //         {images && images.length > 0 ? (
 //           images.map((ImageItem, index) => (
@@ -201,7 +286,7 @@ export default ImageSlider;
 //         ) : (
 //           <div>No images available</div> // Fallback message if no images are available
 //         )}
-        
+
 //         <BsArrowRightCircleFill />
 //       </div>
 //     );
@@ -209,4 +294,3 @@ export default ImageSlider;
 // };
 
 // export default ImageSlider;
-
