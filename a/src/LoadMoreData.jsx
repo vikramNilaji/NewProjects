@@ -64,4 +64,4 @@ const LoadMoreData = () => {
   }
 };
  
-export default LoadMoreData;
+export default LoadMoreData ;
