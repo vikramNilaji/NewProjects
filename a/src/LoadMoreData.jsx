@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import "./App7.css"
+import "./App7.css";
 
 const LoadMoreData = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
-  const [disableItems,setDisableItems]=useState(false)
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [disable,setDisable]=useState(false)
 
   const FetchData = async () => {
     try {
@@ -16,12 +16,12 @@ const LoadMoreData = () => {
           count === 0 ? 0 : count * 20
         }`
       );
-      const ImageData = await response.json();
-      if (ImageData && ImageData.products && ImageData.products.length) {
+      const result = await response.json();
+      if (result && result.products && result.products.length) {
         setLoading(false);
-        setProducts((prevData)=>[...prevData, ...ImageData.products]);
+        setProducts((prevData)=> [...prevData,...result.products]);
       }
-      console.log(ImageData);
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -32,36 +32,37 @@ const LoadMoreData = () => {
   }, [count]);
 
   useEffect(()=>{
-    if(products && products.length === 100 ){
-      setDisableItems(true)
+    if(products && products.length === 100){
+      setDisable(true)
     }
 
   },[products])
 
   if (loading) {
-    return <div> Loading Data... Please wait..</div>;
+    return <div> Loading ... Please wait..</div>;
   } else {
     return (
-      <div className="load-more-container"> 
+      <div className="load-more-container">
         <div className="product-container">
           {products && products.length
             ? products.map((items, index) => {
                 return (
-                  <img className="product" key={items.id} src={items.thumbnail} alt={items.title} />
+                  <img
+                    className="product"
+                    key={items.id}
+                    src={items.thumbnail}
+                    alt={items.thumbnail}
+                  />
                 );
               })
             : null}
         </div>
-        <div className="button-container">
-        <button onClick={() => setCount(count + 1)} disabled={disableItems}>
-  Load More Products
-</button>
 
-{disableItems ? <div> You have reached to maximum items</div> : null}
-        </div>
+        <button disabled={disable} onClick={()=> setCount(count+1)}>Load More Products</button>
+        {disable ? <div> you have reached the maximum </div> : null  }
       </div>
     );
   }
 };
- 
-export default LoadMoreData ;
+
+export default LoadMoreData;
