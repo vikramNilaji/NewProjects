@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const Tree = () => {
-  return (
-    <div>Tree</div>
-  )
-} 
+import { Sidemenu } from "./Sidemenu";
 
-export default Tree
+const Tree = ({ Sidemenu = [] }) => {
+  return <div className="tree-view-container"> <MenuList list={Sidemenu}/> </div>;
+};
+
+export default Tree;
