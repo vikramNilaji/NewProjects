@@ -1,4 +1,5 @@
 import React from 'react'
+import MenuList from './MenuList'
 
 const MenuItem = ({item}) => {
   return (
@@ -8,7 +9,7 @@ const MenuItem = ({item}) => {
 
    
       {
-        item && item.children && item.children.length > 0 ?  :null  
+        item && item.children && item.children.length > 0 ? <MenuList list={item.children}/> :null  
       }
 
       
