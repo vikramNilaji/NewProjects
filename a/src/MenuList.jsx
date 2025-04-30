@@ -9,7 +9,7 @@ const MenuList = ({ list = [] }) => {
             return <MenuItem item={listItem} key={index} />;
           })
         : null}
-    </div>
+    </ul>
   );
 };
 
