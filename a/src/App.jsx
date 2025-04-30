@@ -7,6 +7,7 @@ import Acco from "./Acco"
 import ImageSlider from "./ImageSlider";
 import LoadMoreData from "./LoadMoreData";
 import Tree from "./Tree";
+import Sidemenu from "./Sidemenu";
 
 function App() {
  
@@ -22,7 +23,7 @@ function App() {
         page={"1"}
         limit={"10"}/> */}
         {/* <LoadMoreData/> */}
-        <Tree/>
+        <Tree Sidemenu={Sidemenu}/>
     </>
   );
 }
