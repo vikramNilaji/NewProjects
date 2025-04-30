@@ -6,14 +6,21 @@ export const Sidemenu = [
   {
     label: "Profile",
     to: "/profile",
+
     children: [
       {
         label: "Details",
-        to: "/details",
+        to: "details",
         children: [
           {
-            label: "City",
-            to: "city",
+            label: "Location",
+            to: "location",
+            children: [
+              {
+                label: "City",
+                to: "city",
+              },
+            ],
           },
         ],
       },
