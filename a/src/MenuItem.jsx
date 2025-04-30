@@ -8,7 +8,7 @@ const MenuItem = ({item}) => {
 
    
       {
-        item && item.children && item.children.length > 0 ? <  :null  
+        item && item.children && item.children.length > 0 ?  :null  
       }
 
       
