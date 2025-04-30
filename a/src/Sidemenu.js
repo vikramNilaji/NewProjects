@@ -12,8 +12,8 @@ export const Sidemenu = [
         to: "/details",
         children: [
           {
-            label: "Location",
-            to: "/location",
+            label: "City",
+            to: "city",
           },
         ],
       },
@@ -45,5 +45,4 @@ export const Sidemenu = [
   },
 ];
 
-
-export default Sidemenu
+export default Sidemenu;

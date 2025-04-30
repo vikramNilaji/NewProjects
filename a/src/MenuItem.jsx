@@ -1,10 +1,11 @@
 import React from 'react'
 
-const MenuItem = () => {
+const MenuItem = ({item}) => {
   return (
-    <div>
+    <li>
+    <p>{item.label}</p>
       
-    </div>
+    </li>
   )
 }
 
