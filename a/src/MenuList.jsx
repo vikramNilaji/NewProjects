@@ -1,12 +1,12 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import "./tree.css"
+import "./tree.css";
 
 const MenuList = ({ list = [] }) => {
   return (
     <ul className="menu-list-container">
       {list && list.length > 0
-        ? list.map((listItem,index) => {
+        ? list.map((listItem, index) => {
             return <MenuItem item={listItem} key={index} />;
           })
         : null}
@@ -15,3 +15,6 @@ const MenuList = ({ list = [] }) => {
 };
 
 export default MenuList;
+
+
+

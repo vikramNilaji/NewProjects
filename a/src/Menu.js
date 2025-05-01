@@ -1,4 +1,4 @@
-export const Sidemenu = [
+const Menu = [
   {
     label: "Home",
     to: "/",
@@ -52,4 +52,4 @@ export const Sidemenu = [
   },
 ];
 
-export default Sidemenu;
+export default Menu;
