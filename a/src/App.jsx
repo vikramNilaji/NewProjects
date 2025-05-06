@@ -8,6 +8,7 @@ import LoadMoreData from "./LoadMoreData";
 import Tree from "./Tree";
 import Menu from "./Menu";
 import Menu1 from "./Menu1";
+import Tree1 from "./Tree1";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         page={"1"}
         limit={"10"}/> */}
       {/* <LoadMoreData/> */}
-      <Tree Menu={Menu} />
+      {/* <Tree Menu={Menu} /> */}
       <Tree1 Menu1={Menu1}/>
     </>
   );

@@ -35,3 +35,5 @@ const Menu1 = [
     ],
   },
 ];
+
+export default Menu1
