@@ -7,6 +7,7 @@ import ImageSlider from "./ImageSlider";
 import LoadMoreData from "./LoadMoreData";
 import Tree from "./Tree";
 import Menu from "./Menu";
+import Menu1 from "./Menu1";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         limit={"10"}/> */}
       {/* <LoadMoreData/> */}
       <Tree Menu={Menu} />
+      <Tree1 Menu1={Menu1}/>
     </>
   );
 }
