@@ -15,7 +15,7 @@ const Menu1 = [
               {
                 label: "Login",
                 to: "/login",
-                children: [{ label: "Register", to: "/register" }],
+                children: [{ label: "Register", to: "/register" ,children:[{label:"Phone",to:"phone"}]}],
               },
             ],
           },

@@ -1,18 +1,18 @@
 import React from 'react';
-import MenuItem from './MenuItem';
+import MenuItem1 from './MenuItem1';
 
 const MenuList1 = ({ List = [] }) => {
   return (
-    <div>
+    <ul>
       {List.map((item, index) => {
         return (
           <div key={index}>
-            <MenuItem item={item}/>
+            <MenuItem1 item={item}/>
           </div>
         );
       })}
-    </div>
-  );
+    </ul>
+  ); 
 };
 
 export default MenuList1;
