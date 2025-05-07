@@ -1,31 +1,30 @@
 import React from "react";
 import MenuList1 from "./MenuList1";
 import { useState } from "react";
-
 const MenuItem1 = ({ item }) => {
-  const [displayCurrentChildren, setDisplayCurrentChildren] = useState({});
-  function handleDisplayCurrentChildren(getCurrentLabel) {
-    setDisplayCurrentChildren({
-      ...displayCurrentChildren,
-      [getCurrentLabel]: !displayCurrentChildren[getCurrentLabel],
+  const [displayCurrentChild, setDisplayCurrentChild] = useState({});
+  function handleDisplayChildren(currentLabel) {
+    setDisplayCurrentChild({
+      ...displayCurrentChild,
+      [currentLabel]: !displayCurrentChild[currentLabel],
     });
   }
-  console.log(displayCurrentChildren);
-
   return (
-    <li>
-      {item.label}{" "}
+    <div>
+      {item.label}
       {item && item.children && item.children.length ? (
-        <span onClick={()=>handleDisplayCurrentChildren(item.label)}> {displayCurrentChildren[item.label] ? "-":"+"} </span>
+        <span onClick={() => handleDisplayChildren(item.label)}>
+          {displayCurrentChild[item.label] ? "+" : "-"}
+        </span>
       ) : null}
-      <p>
-        {item && item.children && item.children.length > 0 && displayCurrentChildren[item.label] ? (
-          <MenuList1 List={item.children} />
-        ) : null}{" "}
-      </p>
-    </li>
+      {item &&
+      item.children &&
+      item.children.length &&
+      displayCurrentChild[item.label] ? (
+        <MenuList1 List={item.children} />
+      ) : null}
+    </div>
   );
 };
 
 export default MenuItem1;
- 
