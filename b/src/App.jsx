@@ -1,7 +1,7 @@
 import Menu from "./Menu.js"
 import './App.css'
 import TreeView from "./TreeView.jsx"
-// import Menucopy from "./Menucopy.js"
+import ToggleExample from "./ToggleExample.jsx"
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
   return (
     <>
      <TreeView Menu={Menu} />
+     <ToggleExample/>
     </>
   )
 }
