@@ -7,6 +7,7 @@ const MenuItem = ({ item }) => {
   function HandleChildren(getCurrentLabel){
     setDisplayCurrentChildren({...displayCurrentChildren,[getCurrentLabel] : !displayCurrentChildren[getCurrentLabel]})
   }
+  console.log(displayCurrentChildren)
   return (
     <>
       {/* // <div>{item[0] ? item.label : "no item"}</div> */}

@@ -9,6 +9,7 @@ const MenuItem1 = ({ item }) => {
       [currentLabel]: !displayCurrentChild[currentLabel],
     });
   }
+  console.log(displayCurrentChild)
   return (
     <div>
       {item.label}
