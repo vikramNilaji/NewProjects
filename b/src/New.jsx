@@ -1,17 +1,32 @@
 import { useState } from "react";
 
-const New = () => {
-  const items = [2,4,6,7,8,9,10];
-  let sum=0
+let New = () => {
+  const items = [
+    { name: "vikram", surname: "nilaji" },
+    { name: "pooja", surname: "nilaji" },
+    { name: "pooja", surname: "nilaji" },
+  ];
+
+  let updatedItems = items.map((item, index) => {
+    if (index === 0 || index === 1) {
+      return { ...item, age: 23 };
+    } else {
+      return item;
+    }
+  });
+
+  console.log(updatedItems);
 
   return (
     <>
-      {items.map((i, index) => {
-        sum= sum+i;
-        return <div key={index}> {sum} </div>;
-      })}
+      {updatedItems.map((item, index) => (
+        <div key={index}>
+          Name: {item.name}, Surname: {item.surname}, {item.age ? <div> Age : {item.age} </div> : "NA"}
+        </div>
+      ))}
     </>
   );
 };
 
 export default New;
+
