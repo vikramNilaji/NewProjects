@@ -1,32 +1,45 @@
-import { useState } from "react";
-
-let New = () => {
-  const items = [
-    { name: "vikram", surname: "nilaji" },
-    { name: "pooja", surname: "nilaji" },
-    { name: "pooja", surname: "nilaji" },
+const New = () => {
+  let data = [
+    {
+      name: "vikram",
+      surname: "nilaji",
+    },
+    {
+      name: "pooja",
+      surname: "nilaji",
+      children: [{ daughterName: "maanya" }],
+    },
+    {
+      name: "Sumitra",
+      surname: "nilaji",
+    },
   ];
 
-  let updatedItems = items.map((item, index) => {
-    if (index === 0 || index === 1) {
-      return { ...item, age: 23 };
+  const updatedData = data.map((item, index) => {
+    if (index === 0 || index === 1 || index === 2) {
+      return { ...item, age: 28 };
     } else {
-      return item;
+      return  item ;
     }
   });
 
-  console.log(updatedItems);
-
+  console.log(updatedData);
   return (
     <>
-      {updatedItems.map((item, index) => (
-        <div key={index}>
-          Name: {item.name}, Surname: {item.surname}, {item.age ? <div> Age : {item.age} </div> : "NA"}
-        </div>
-      ))}
+    
+      {updatedData.map((item1, index) => {
+
+        return ( <div> { <div key={index}>
+        
+          Name: {item1.name} Surname:{item1.surname} Age:{item1.age}
+
+          {item1 && item1.children && item1.children.length ? <div>{item1.children[0].daughterName}</div> : <div> NA</div> }
+        </div>}</div> )
+         })}
+
+
     </>
   );
 };
 
 export default New;
-
