@@ -1,9 +1,9 @@
-import Menu from "./Menu.js"
+// import Menu from "./Menu.js"
 import './App.css'
-import TreeView from "./TreeView.jsx"
-import ToggleExample from "./ToggleExample.jsx"
-import New from "./New.jsx"
-
+// import TreeView from "./TreeView.jsx"
+// import ToggleExample from "./ToggleExample.jsx"
+// import New from "./New.jsx"
+import New1 from "./New1.jsx"
 function App() {
 
 
@@ -11,7 +11,8 @@ function App() {
     <>
      {/* <TreeView Menu={Menu} /> */}
      {/* <ToggleExample/> */}
-     <New/>
+     {/* <New/> */}
+     <New1/>
     </>
   )
 }
