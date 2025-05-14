@@ -30,7 +30,7 @@ const New1 = () => {
       [childKey]: !prev[childKey],
     }));
   };
-
+console.log(selectData)
   return (
     <>
       {updatedData.map((item1, index) => (
@@ -44,13 +44,13 @@ const New1 = () => {
               {selectData[item1.name] ? "-" : "+"}
             </span>
           ) : null}
-          {selectData[item1.name] && item1.children
+          {/* {selectData[item1.name] && item1.children
             ? item1.children.map((child, childIndex) => (
-                <div key={childIndex} style={{ paddingLeft: "20px" }}>
+                <div key={childIndex} style={{ paddingLeft: "20px" }}> 
                   Child: {child.name}
                 </div>
               ))
-            : null}
+            : null} */}
         </div>
       ))}
     </>
