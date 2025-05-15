@@ -44,13 +44,13 @@ console.log(selectData)
               {selectData[item1.name] ? "-" : "+"}
             </span>
           ) : null}
-          {/* {selectData[item1.name] && item1.children
+           {selectData[item1.name] && item1.children
             ? item1.children.map((child, childIndex) => (
                 <div key={childIndex} style={{ paddingLeft: "20px" }}> 
                   Child: {child.name}
                 </div>
               ))
-            : null} */}
+            : null} 
         </div>
       ))}
     </>
