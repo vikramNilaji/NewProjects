@@ -23,4 +23,4 @@ const QRCodeGenerator = () => {
   );
 };
 
-export default QRCodeGenerator;
+export default QRCodeGenerator ;
