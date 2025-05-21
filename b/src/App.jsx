@@ -1,5 +1,6 @@
 // import Menu from "./Menu.js"
 import './App.css'
+import LightdarkMode from './LightdarkMode.jsx'
 // import LocalStorage from './LocalStorage.jsx'
 import Login from './Login.jsx'
 
@@ -17,7 +18,8 @@ function App() {
      {/* <New/> */}
      {/* <New1/> */}
      {/* <LocalStorage/> */}
-     <Login/>
+     {/* <Login/> */}
+     <LightdarkMode/>
     </>
   )
 }
