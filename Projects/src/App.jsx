@@ -1,14 +1,13 @@
-import './App.css'
-import CustomScroll from './CustomScroll'
+import React from "react";
+import CustomTabsTest from "./CustomTabsTest";
 
 function App() {
-  
-
   return (
-    <>
-     <CustomScroll url={'https://dummyjson.com/products?limit=100'}/>
-    </>
-  )
+    <div>
+      <CustomTabsTest />
+    </div>
+  );
 }
 
-export default App
+export default App;
+
