@@ -8,15 +8,15 @@
 
 }
 
-.scroll-progrees-tracking-container {
+.scroll-progress-tracking-container {
 
   width: 100%;
   height: 10px;
-  background-color: aqua;
+  background-color: rgb(255, 0, 191);
 }
 
 .current-progress-bar {
   height: 10px;
-  background-color: blueviolet;
+  background-color: rgb(8, 114, 31);
   width: 0%;
 }

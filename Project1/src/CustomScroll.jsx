@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"; 
-import "./App.css"
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 const CustomScroll = ({ url }) => {
   const [Loading, setLoading] = useState(false);
@@ -44,7 +44,7 @@ const CustomScroll = ({ url }) => {
 
   useEffect(() => {
     window.addEventListener("scroll", HandleScrollPercentage);
-    return () => window.removeEventListener("scroll", () => {});
+    return () => window.removeEventListener("scroll", HandleScrollPercentage);
   }, []);
 
   console.log(data, scrollPercentage);
@@ -53,16 +53,8 @@ const CustomScroll = ({ url }) => {
     return <div>Loading... Please wait</div>;
   }
 
-  if(ErrorMessage){
-    return ( <div>
-
-        Error Occurrd :{ErrorMessage}
-    </div>)
-
-  }
-
   if (ErrorMessage) {
-    return <div>Error: {ErrorMessage}</div>;
+    return <div>Error Occurrd :{ErrorMessage}</div>;
   }
 
   return (
@@ -72,7 +64,7 @@ const CustomScroll = ({ url }) => {
         <div className="scroll-progress-tracking-container">
           <div
             className="current-progress-bar"
-            style={{ width: `${scrollPercentage}` }}
+            style={{ width: `${scrollPercentage}%` }}
           ></div>
         </div>
       </div>
