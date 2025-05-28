@@ -5,7 +5,7 @@ import Modeltest from "./Modeltest";
 function App() {
   return (
     <div>
-      <CustomTabsTest />
+      {/* <CustomTabsTest /> */}
       <Modeltest/>
     </div>
   );
