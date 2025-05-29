@@ -1,11 +1,11 @@
 import React from "react";
-import CustomTabsTest from "./CustomTabsTest";
-import Modeltest from "./Modeltest";
+import CustomTabsTest from "./CustomTabs/CustomTabsTest";
+import Modeltest from "./CustomModel/Modeltest";
 
 function App() {
   return (
     <div>
-      {/* <CustomTabsTest /> */}
+      <CustomTabsTest />
       <Modeltest/>
     </div>
   );
