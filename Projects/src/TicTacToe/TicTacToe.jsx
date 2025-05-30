@@ -16,7 +16,7 @@ const TicTacToe = () => {
     if(copySquares[getCurrentSquare]) return;
     copySquares[getCurrentSquare] = isXTurn ? "X" : "O";
     setIsXTurn(!isXTurn);
-    setSqaures(copySquares);
+    setSqaures(copySquares );
   }
 
   return (
