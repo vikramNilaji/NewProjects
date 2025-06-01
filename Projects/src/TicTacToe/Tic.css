@@ -66,3 +66,21 @@ h1 {
     font-size: 2rem;
   }
 }
+
+.Button{
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    font-size: larger;
+    background-color: #0077b6;
+    cursor: pointer;
+}
+.Button:hover{
+    font-size: x-large;
+    margin-top: 1px;
+}
+
+.Button:active {
+  transform: scale(0.95);
+  background-color: #ad1c1c;
+}

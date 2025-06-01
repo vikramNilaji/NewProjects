@@ -35,6 +35,11 @@ const TicTacToe = () => {
     setIsXTurn(!isXTurn);
     setSqaures(copySquares );
   }
+
+  function HandleRestart(){
+    setIsXTurn(true)
+    setSqaures(Array(9).fill(""))
+  }
   useEffect(() => {
   const winner = getWinner(squares);
 
@@ -68,6 +73,9 @@ const TicTacToe = () => {
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div> 
+      <br/>
+
+      <button  className="Button" onClick={HandleRestart}> Restart</button>
     
      
     </div>
