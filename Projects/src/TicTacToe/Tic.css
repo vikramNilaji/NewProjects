@@ -1,4 +1,4 @@
-.tictactoe-container{
+/* .tictactoe-container{
     clear:both;
     content:"";
     display: table;
@@ -16,4 +16,53 @@
     margin-top: -1px;
     cursor: pointer;
 
+} */
+
+
+/* Tic.css */
+
+.tictactoe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.row {
+  display: flex;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border: 2px solid #0077b6;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0077b6;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.square:hover {
+  background-color: #caf0f8;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 600px) {
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
 }
