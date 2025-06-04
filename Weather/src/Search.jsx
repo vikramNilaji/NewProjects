@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css"
 
-const Search = ({ search, setSearch }) => {
+const Search = ({ search, setSearch,HandleSearch }) => {
   return (
     <div className="search-engine">
       <input
@@ -12,7 +12,7 @@ const Search = ({ search, setSearch }) => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <button className="search-btn" >
+      <button onClick={HandleSearch} className="search-btn" >
         Search
       </button>
     </div>
