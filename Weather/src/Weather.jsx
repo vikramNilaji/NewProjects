@@ -76,7 +76,7 @@ const Weather = () => {
             <div >
               <div className="column">
                 <p className="wind">{weatherData?.main?.humidity}%</p>
-                <p>Humidity</p>
+                <p>Humidity in your city</p>
               </div>
                </div>
             </div>
