@@ -17,6 +17,6 @@ const Search = ({ search, setSearch,HandleSearch }) => {
       </button>
     </div>
   );
-};
+};  
 
 export default Search;
