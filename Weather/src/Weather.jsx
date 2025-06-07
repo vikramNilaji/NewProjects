@@ -68,7 +68,7 @@ const Weather = () => {
             <div >
               <div className="column">
                 <p className="wind">{weatherData?.wind?.speed}</p>
-                <p>Wind Speed </p>
+                <p>Wind Speed in your city</p>
               </div>
             </div>
          
