@@ -1,19 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Weather from './Weather'
-import './App.css'
-import Search from './Search'
+import Weather from "./Weather";
+import "./App.css";
+import WeatherApp from "./WeatherApp/WeatherApp";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Weather/>
-     
+      {/* <Weather /> */}
+      <WeatherApp/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
