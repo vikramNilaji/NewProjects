@@ -1,6 +1,6 @@
 import Search from "./Search";
 import { useState, useEffect } from "react";
-import "./App.css"
+import "./App.css";
 
 const Weather = () => {
   const [search, setSearch] = useState("");
@@ -51,7 +51,7 @@ const Weather = () => {
       {loading ? (
         <div className="loading"> Loading...</div>
       ) : (
-        <div >
+        <div>
           <div className="city-name">
             <h2>
               {weatherData?.name},<span>{weatherData?.sys?.country}</span>
@@ -62,28 +62,29 @@ const Weather = () => {
           </div>
           <div className="temp">{weatherData?.main?.temp} &#x2103;</div>
           <p className="discription">
-            {weatherData && weatherData.weather && weatherData.weather[0] ? weatherData.weather[0].description : ""}
+            {weatherData && weatherData.weather && weatherData.weather[0]
+              ? weatherData.weather[0].description
+              : ""}
           </p>
           <div className="weather-info">
-            <div >
+            <div>
               <div className="column">
                 <p className="wind">{weatherData?.wind?.speed}</p>
                 <p>Wind Speed in your city</p>
               </div>
             </div>
-         
-          <div className="humidity">
-            <div >
-              <div className="column">
-                <p className="wind">{weatherData?.main?.humidity}%</p>
-                <p>Humidity in your city</p>
+
+            <div className="humidity">
+              <div>
+                <div className="column">
+                  <p className="wind">{weatherData?.main?.humidity}%</p>
+                  <p>Humidity in your city</p>
+                </div>
               </div>
-               </div>
             </div>
           </div>
         </div>
       )}
-   
     </div>
   );
 };
