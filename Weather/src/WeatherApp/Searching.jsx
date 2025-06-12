@@ -1,18 +1,13 @@
-import React from "react";
+const Searching=({search,setSearch,HandleSearch})=>{
+  return <div>
 
-const Searching = ({ search, setSearch, HandleSearch }) => {
-  return (
-    <div>
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      />
-      <button onClick={HandleSearch}>Search</button>
-    </div>
-  );
-};
+    <input type="text" value={search} onChange={(e)=>{setSearch(e.target.value)}} />
 
-export default Searching;
+    <button onClick={HandleSearch}></button>
+
+
+  </div>
+}
+
+export default Searching
+ 
