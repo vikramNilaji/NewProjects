@@ -3,7 +3,7 @@ const Searching=({search,setSearch,HandleSearch})=>{
 
     <input type="text" value={search} onChange={(e)=>{setSearch(e.target.value)}} />
 
-    <button onClick={HandleSearch}></button>
+    <button onClick={HandleSearch}>Search</button>
 
 
   </div>
