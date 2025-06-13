@@ -10,7 +10,7 @@ const WeatherApp = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=84abb64fe78baef3fcb22bcffcd8c51c`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=84abb64fe78baef3fcb22bcffcd8c51c&units=metric`
       );
       const JsonData = await response.json();
       setWeatherData(JsonData);
@@ -38,10 +38,21 @@ const WeatherApp = () => {
       <Searching
         search={search}
         setSearch={setSearch}
-        HandleSearch={HandleSearch }
+        HandleSearch={HandleSearch}
       />
 
-      {loading? <h2> Loading ... pLease wait</h2>: <div>{weatherData.cod} </div> }
+      {loading ? (
+        <h2> Loading ... pLease wait</h2>
+      ) : (
+        <div>
+          <div className="city-name">
+            <h2>
+              {weatherData?.name},<span>{weatherData?.sys?.country}</span>
+              {weatherData?.main?.temp},<span>{weatherData?.sys?.country}</span>
+            </h2>
+          </div>{" "}
+        </div>
+      )}
     </div>
   );
 };

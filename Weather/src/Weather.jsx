@@ -40,6 +40,7 @@ const Weather = () => {
   useEffect(() => {
     fetchWeatherData("bangalore");
   }, []);
+  
 
   return (
     <div className="App">
