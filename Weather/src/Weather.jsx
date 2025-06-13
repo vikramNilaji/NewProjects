@@ -38,7 +38,7 @@ const Weather = () => {
   }
 
   useEffect(() => {
-    fetchWeatherData("banglore");
+    fetchWeatherData("bangalore");
   }, []);
 
   return (
