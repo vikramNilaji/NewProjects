@@ -38,7 +38,7 @@ const WeatherApp = () => {
       <Searching
         search={search}
         setSearch={setSearch}
-        HandleSearch={HandleSear ch }
+        HandleSearch={HandleSearch }
       />
 
       {loading? <h2> Loading ... pLease wait</h2>: <div>{weatherData.cod} </div> }
