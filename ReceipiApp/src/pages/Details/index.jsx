@@ -32,13 +32,15 @@ const RecipeDetails = () => {
             src={recipeDetailsData?.image_url}
             className="w-full h-full object-cover group-hover:scale-105 duration-300 "
           />
-           
         </div>
-         <h2 className=" text-3xl text-cyan-700 font-medium">{recipeDetailsData?.publisher}</h2> 
-      <h3 className="font-bold txt-2xl truncate text-black"> Details: {recipeDetailsData?.title || "Loading..."}</h3>
+        <h2 className=" text-3xl text-cyan-700 font-medium">
+          {recipeDetailsData?.publisher}
+        </h2>
+        <h3 className="font-bold txt-2xl truncate text-black">
+          {" "}
+          Details: {recipeDetailsData?.title || "Loading..."}
+        </h3>
       </div>
-     
-     
     </div>
   );
 };
