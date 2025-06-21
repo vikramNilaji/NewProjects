@@ -11,8 +11,8 @@ function App() {
       <div className="min-w-screen p-6 bg-white text-gray-600 text-lg ">
         <NavBar></NavBar>
         <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/favourites" element={<Favourites/>}></Route>
+          <Route path="/" element={<Home/>}>Home</Route>
+          <Route path="/favourites" element={<Favourites/>}>Favourites</Route>
           <Route path="/recipe-item/:id" element={<Details/>}></Route>
         </Routes>
       </div>

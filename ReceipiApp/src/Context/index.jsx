@@ -6,6 +6,7 @@ const GlobalState = ({ children }) => {
   const [loading,setLoading]=useState(false)
   const [recipeList,setRecipeList]=useState([])
   const [recipeDetailsData,setRecipeDetailsData]=useState(null)
+  const [favouriteList,setFavouriteList]=useState([])
   
 
   async function HandleSubmit(event) {
@@ -29,10 +30,22 @@ const GlobalState = ({ children }) => {
       setSearchParam('')
     }
   }
+  function HandleAddFavouriteItem(getCurrentItem){
+    console.log(getCurrentItem)
+    let copyFavouriteList=[...favouriteList]
+    const index=copyFavouriteList.findIndex(item=>item.id === getCurrentItem.id)
+    if(index === -1){
+      copyFavouriteList.push(getCurrentItem)
+      }
+    else{
+      copyFavouriteList.splice(index)
+    }
+    setFavouriteList(copyFavouriteList)
+  }
 
-   console.log(loading,recipeList);
+   console.log(loading,recipeList,favouriteList);
   return (
-    <GlobalContext.Provider value={{ searchParam, loading,recipeList,setSearchParam,HandleSubmit,recipeDetailsData,setRecipeDetailsData }}>
+    <GlobalContext.Provider value={{ searchParam, loading,recipeList,setSearchParam,HandleSubmit,recipeDetailsData,setRecipeDetailsData,HandleAddFavouriteItem,favouriteList }}>
       {children}
     </GlobalContext.Provider>
   );

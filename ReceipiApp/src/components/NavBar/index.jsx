@@ -8,11 +8,11 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row lg:gap-0 ">
-      <h2 className="text-2xl font-semibold">Food Recipe</h2>
+      {/* <h2 className="text-2xl font-semibold">Food Recipe</h2> */}
 
-      <NavLink to="/" className="text-black hover:text-gray-700 duration-300">
+       <NavLink to="/" className="text-black hover:text-gray-700 duration-300">
         Food Recipe
-      </NavLink>
+      </NavLink> 
 
       <form onSubmit={HandleSubmit}>
         <input
@@ -26,10 +26,10 @@ const NavBar = () => {
 
       <ul className="flex gap-5">
         <li>
-          <NavLink to="/" className="text-black hover:text-gray-700 duration-300"></NavLink>
+          <NavLink to="/" className="text-black hover:text-gray-700 duration-300">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/favourites" className="text-black hover:text-gray-700 duration-300"></NavLink>
+          <NavLink to="/favourites" className="text-black hover:text-gray-700 duration-300">Favourites</NavLink>
         </li>
       </ul>
     </nav>
