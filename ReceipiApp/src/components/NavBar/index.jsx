@@ -7,32 +7,37 @@ const NavBar = () => {
   console.log(searchParam);
 
   return (
-    <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row lg:gap-0 ">
-      {/* <h2 className="text-2xl font-semibold">Food Recipe</h2> */}
+   <nav className="py-8 bg-white shadow">
+  <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-4 px-4">
+    {/* Brand */}
+    <NavLink to="/" className="text-black hover:text-gray-700 text-2xl font-semibold">
+      Food Recipe
+    </NavLink>
 
-       <NavLink to="/" className="text-black hover:text-gray-700 duration-300">
-        Food Recipe
-      </NavLink> 
+    {/* Search */}
+    <form onSubmit={HandleSubmit} className="my-2 lg:my-0">
+      <input
+        type="text"
+        name="search"
+        placeholder="Enter Items"
+        value={searchParam}
+        onChange={(event) => setSearchParam(event.target.value)}
+        className="bg-white/75 px-8 py-2 rounded-full outline-none lg:w-96 shadow"
+      />
+    </form>
 
-      <form onSubmit={HandleSubmit}>
-        <input
-          type="text"
-          name="search"
-          placeholder="Enter Items"
-          onChange={(event) => setSearchParam(event.target.value)}
-          className="bg-white/75 px-8 rounded-full outline-none lg:w-96 shadow-lg shadow-red-100 focus:shadow-red-200"
-        />
-      </form>
+    {/* Navigation Links */}
+    <ul className="flex gap-5">
+      <li>
+        <NavLink to="/" className="text-black hover:text-gray-700">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/favourites" className="text-black hover:text-gray-700">Favourites</NavLink>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-      <ul className="flex gap-5">
-        <li>
-          <NavLink to="/" className="text-black hover:text-gray-700 duration-300">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/favourites" className="text-black hover:text-gray-700 duration-300">Favourites</NavLink>
-        </li>
-      </ul>
-    </nav>
   );
 };
 
