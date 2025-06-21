@@ -40,6 +40,26 @@ const RecipeDetails = () => {
           {" "}
           Details: {recipeDetailsData?.title || "Loading..."}
         </h3>
+        <button className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3">
+          {" "}
+          Save as favourites
+        </button>
+        <div>
+          <span className="text-2xl font-semibold text-black">Ingredients</span>
+          <ul className="flex col gap-3">
+            {" "}
+            {recipeDetailsData?.ingredients.map((ingredients) => (
+              <li>
+                {" "}
+                <span className=" bg-red-400">
+                  {" "}
+                  {ingredients.quantity}
+                  {ingredients.unit}
+                </span> <span className="bg-blue-400"> {ingredients.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

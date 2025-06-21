@@ -6,6 +6,7 @@ const GlobalState = ({ children }) => {
   const [loading,setLoading]=useState(false)
   const [recipeList,setRecipeList]=useState([])
   const [recipeDetailsData,setRecipeDetailsData]=useState(null)
+  
 
   async function HandleSubmit(event) {
     event.preventDefault()
