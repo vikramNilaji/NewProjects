@@ -38,7 +38,6 @@ const Accordion = () => {
           >
             {selected.includes(items.id) ? "-" : "+"}
           </h2>
-
           {selected.includes(items.id) ? <h2>{`A: ${items.answer}`}</h2> : null}
         </div>
       ))}
