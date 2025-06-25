@@ -1,0 +1,30 @@
+.container {
+  display: inline-flex;
+  border: 2px solid red;
+  background-color: aquamarine;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+
+}
+
+.Line {
+  padding-left: -40px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+li{
+ margin: 10px;
+ 
+}
+
+li button{
+  height: 30px;
+  width: 30px;
+  font-size: large;
+}

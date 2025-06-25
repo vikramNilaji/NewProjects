@@ -1,52 +1,52 @@
-import { useState } from "react";
 import Data from "./Data.js";
-import "./New.css";
+import { useState } from "react";
 
-const Accordion = () => {
-  const [selected, setSelected] = useState([]);
-  const [SingleSelection, MultiSelection] = useState(true);
+const NewAccordion = () => {
+  const [selectedId, setSelectedId] = useState([]);
+  const [SingleSelection, setSingleSelection] = useState(true);
 
-  function HandleSelection(ItemId) {
-    setSelected(selected.includes(ItemId) ? [] : [ItemId]);
+  function HandleSingleClick(ItemId) {
+    setSelectedId(selectedId.includes(ItemId) ? [] : [ItemId]);
+    console.log(selectedId);
   }
 
-  function HandleMultiSelection(ItemId) {
-    if (selected.includes(ItemId)) {
-      setSelected(selected.filter((id) => id !== ItemId));
-    } else {
-      setSelected([...selected, ItemId]);
-    }
+  function HandleMultiClick(ItemId) {
+    setSelectedId(
+      selectedId.includes(ItemId)
+        ? (selectedId) => selectedId.filter((id) => id !== ItemId)
+        : (selectedId) => [...selectedId, ItemId]
+    );
+    console.log(selectedId)
   }
 
   return (
-    <div className="accordion-container">
-      <button
-        onClick={() => MultiSelection(!SingleSelection)}
-        className="toggle-button"
-      >
-        {SingleSelection ? "Enable Multi Selection" : "Enable Single Selection"}
+    <div>
+      <button onClick={() => setSingleSelection(!SingleSelection)}>
+        {SingleSelection ? "MultiSelection" : "SingleSelection"}{" "}
       </button>
-
-      {Data.map((items, index) => (
-        <div key={index}>
-          <div
-            className="accordion-header"
-            onClick={() =>
-              SingleSelection
-                ? HandleSelection(items.id)
-                : HandleMultiSelection(items.id)
-            }
-          >
-            <span>{`${items.id}) ${items.question}`}</span>
-            <span>{selected.includes(items.id) ? "-" : "+"}</span>
+      {Data.map((items, index) => {
+        return (
+          <div key={index}>
+            <div>{items.id}</div>
+            <div>{items.question}</div>
+            <div
+              onClick={
+                SingleSelection
+                  ? () => HandleSingleClick(items.id)
+                  : () => HandleMultiClick(items.id)
+              }
+            >
+              +
+            </div>
+            <div>
+              {" "}
+              {selectedId.includes(items.id) ? <div>{items.answer}</div> : null}
+            </div>
           </div>
-          {selected.includes(items.id) && (
-            <div className="accordion-answer">{items.answer}</div>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
 
-export default Accordion;
+export default NewAccordion;
