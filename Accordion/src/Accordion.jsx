@@ -7,41 +7,41 @@ const Accordion = () => {
 
   function HandleSelection(ItemId) {
     setSelected(selected.includes(ItemId) ? [] : [ItemId]);
-    console.log(selected);
   }
 
   function HandleMultiSelection(ItemId) {
     if (selected.includes(ItemId)) {
       setSelected(selected.filter((id) => id !== ItemId));
-      console.log(selected);
     } else {
       setSelected([...selected, ItemId]);
     }
   }
+
   return (
-    <>
-      <button onClick={() => MultiSelection(!SingleSelection)}>
-        {SingleSelection ? "EnableMultiSelection" : "EnableSingleSelection"}
+    <div className="accordion-container">
+      <button onClick={() => MultiSelection(!SingleSelection)} className="toggle-button">
+        {SingleSelection ? "Enable Multi Selection" : "Enable Single Selection"}
       </button>
+
       {Data.map((items, index) => (
         <div key={index}>
-          <h2>
-            {items.id} {")"}
-          </h2>
-          <h2>{` Q: ${items.question}`}</h2>
-          <h2
+          <div
+            className="accordion-header"
             onClick={() =>
               SingleSelection
                 ? HandleSelection(items.id)
                 : HandleMultiSelection(items.id)
             }
           >
-            {selected.includes(items.id) ? "-" : "+"}
-          </h2>
-          {selected.includes(items.id) ? <h2>{`A: ${items.answer}`}</h2> : null}
+            <span>{`${items.id}) ${items.question}`}</span>
+            <span>{selected.includes(items.id) ? "-" : "+"}</span>
+          </div>
+          {selected.includes(items.id) && (
+            <div className="accordion-answer">{items.answer}</div>
+          )}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
