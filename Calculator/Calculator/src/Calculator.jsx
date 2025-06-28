@@ -1,8 +1,27 @@
 import { useState } from "react";
 import "./Cal.css";
+import { evaluate } from "mathjs";
 
 const Calculator = () => {
   const [text, setText] = useState("");
+  const [evaluated,setEvaluated]=useState(true)
+  const Numbers = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 0, "/", "*"],
+    ["-", "+", "=", "."],
+  ];
+
+  function HandleClick(values) {
+    const Char = values.target.innerText;
+    if (Char === "=") {
+      setText(evaluate(text).toString());
+      setEvaluated(true)
+    } else {
+      setText((prev) => prev + Char);
+      setEvaluated(false)
+    }
+  }
 
   return (
     <div>
@@ -12,62 +31,19 @@ const Calculator = () => {
           value={text}
           type="text"
         />
-        <ul className="Line" style={{ paddingLeft: "-0px" }}>
-          <li>
-            <button>1</button>
-          </li>
-          <li>
-            <button>2</button>
-          </li>
-          <li>
-            <button>3</button>
-          </li>
-          <li>
-            <button>4</button>
-          </li>
-        </ul>
-        <ul className="Line" style={{ paddingLeft: "-0px" }}>
-          <li>
-            <button>5</button>
-          </li>
-          <li>
-            <button>6</button>
-          </li>
-          <li>
-            <button>7</button>
-          </li>
-          <li>
-            <button>8</button>
-          </li>
-        </ul>
-        <ul className="Line" style={{ paddingLeft: "-0px" }}>
-          <li>
-            <button>9</button>
-          </li>
-          <li>
-            <button>0</button>
-          </li>
-          <li>
-            <button>/</button>
-          </li>
-          <li>
-            <button>*</button>
-          </li>
-        </ul>
-        <ul className="Line" style={{ paddingLeft: "-0px" }}>
-          <li>
-            <button>+</button>
-          </li>
-          <li>
-            <button>-</button>
-          </li>
-          <li>
-            <button>%</button>
-          </li>
-          <li>
-            <button>=</button>
-          </li>
-        </ul>
+        {Numbers.map((items, index) => {
+          return (
+            <ul className="Line" key={index}>
+              {items.map((subitems, index) => {
+                return (
+                  <li onClick={HandleClick} className="items" key={index}>
+                    {subitems}
+                  </li>
+                );
+              })}
+            </ul>
+          );
+        })}
       </div>
     </div>
   );
