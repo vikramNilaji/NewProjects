@@ -4,47 +4,55 @@ import { evaluate } from "mathjs";
 
 const Calculator = () => {
   const [text, setText] = useState("");
-  const [evaluated,setEvaluated]=useState(true)
+  const [evaluated, setEvaluated] = useState(false);
+
   const Numbers = [
     [1, 2, 3, 4],
     [5, 6, 7, 8],
     [9, 0, "/", "*"],
     ["-", "+", "=", "."],
+    ["C", "", "", ""],
   ];
 
-  function HandleClick(values) {
-    const Char = values.target.innerText;
-    if (Char === "=") {
-      setText(evaluate(text).toString());
-      setEvaluated(true)
+  function HandleClick(event) {
+    const char = event.target.innerText;
+
+    if (char === "=") {
+      try {
+        setText(evaluate(text).toString());
+      } catch {
+        setText("Error");
+      }
+      setEvaluated(true);
+    } else if (char == "C") {
+      setText("");
     } else {
-      setText((prev) => prev + Char);
-      setEvaluated(false)
+      if (evaluated) {
+        setText(char);
+      } else {
+        setText((prev) => prev + char);
+      }
+
+      setEvaluated(false);
     }
   }
 
   return (
-    <div>
-      <div className="container">
-        <input
-          onChange={(event) => setText(event.target.value)}
-          value={text}
-          type="text"
-        />
-        {Numbers.map((items, index) => {
-          return (
-            <ul className="Line" key={index}>
-              {items.map((subitems, index) => {
-                return (
-                  <li onClick={HandleClick} className="items" key={index}>
-                    {subitems}
-                  </li>
-                );
-              })}
-            </ul>
-          );
-        })}
-      </div>
+    <div className="container">
+      <input
+        type="text"
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      />
+      {Numbers.map((row, rowIndex) => (
+        <ul key={rowIndex} className="Line">
+          {row.map((item, colIndex) => (
+            <li key={colIndex} className="items" onClick={HandleClick}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      ))}
     </div>
   );
 };
