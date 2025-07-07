@@ -6,7 +6,6 @@ const Random = () => {
   const [HexColor1, setHexColor1] = useState("#ffffa");
   const [RGB, setRGB] = useState(`rgba(218, 36, 36, 0.87)`);
   const [newColorFormat, setNewColorFormat] = useState(true);
-  const [colors, setColors] = useState(true);
 
   function RandomNumbers(length) {
     return Math.floor(Math.random() * length);
@@ -42,20 +41,10 @@ const Random = () => {
 
   return (
     <div>
-      <p>{newColorFormat ? HexColor : RGB}</p>
-      <button
-        onClick={HexC}
-        style={{ backgroundColor: newColorFormat ? "red" : null }}
-      >
-        Hex Color
-      </button>
-      <button
-        onClick={RGBC}
-        style={{ backgroundColor: newColorFormat ? null : "red" }}
-      >
-        RGB Color
-      </button>
-      <button onClick={ColorFormat}>Change Format</button>
+      <p style={{backgroundColor: newColorFormat? HexColor:RGB}}>{newColorFormat ? HexColor : RGB}</p>
+      <button onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? "red" : null }}> Hex </button>
+      <button onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? null : "red" }}>RGB</button>
+      <button onClick={newColorFormat? HexC : RGBC }>Change Color</button>
     </div>
   );
 };
