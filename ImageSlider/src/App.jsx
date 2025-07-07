@@ -4,6 +4,7 @@ import "./App.css";
 // import ImageSlider1 from "./ImageSlider1"
 // import ImageSlider3 from "./ImageSlider3";
 import ImageSlider4 from "./ImageSlider4";
+import Navbar from "./Navbar";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         page={"1"}
         limit={"10"}
       />
+      <Navbar/>
     </>
   );
 }

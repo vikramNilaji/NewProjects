@@ -1,0 +1,21 @@
+.containers{
+  position: relative;
+
+}
+
+.item1{
+  position:absolute;
+  background-color: rgb(187, 187, 39);
+
+}
+.item2{
+  position:absolute;background-color: rgb(32, 148, 67);
+  left: 120px;
+}
+.item3{
+  position:absolute;background-color: rgb(17, 117, 104);
+  left: 180px;
+}
+.item4{
+  position:absolute;background-color: rgb(163, 17, 102);  left: 60px;
+}
