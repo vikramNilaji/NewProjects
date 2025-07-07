@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  font-size: xx-large;
+  border-radius: 30px;
+  transition-property: background-color;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+.ButtonContainer {
+  display: flex;
+  column-gap: 30px;
+}
+
+.buttons {
+  background-color: rgb(6, 32, 1);
+  transition: 0.4s;
+}
+
+.buttons:hover {
+  background-color: aqua;
+  transform: translate(2px) scale(1.1);
+}

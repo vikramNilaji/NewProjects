@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "./Random.css"
 
 const Random = () => {
   const [HexColor, setHexColor] = useState("#ffffa");
@@ -40,11 +41,14 @@ const Random = () => {
   }
 
   return (
-    <div>
-      <p style={{backgroundColor: newColorFormat? HexColor:RGB}}>{newColorFormat ? HexColor : RGB}</p>
-      <button onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? "red" : null }}> Hex </button>
-      <button onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? null : "red" }}>RGB</button>
-      <button onClick={newColorFormat? HexC : RGBC }>Change Color</button>
+    <div className="container">
+      <p className="Color" style={{backgroundColor: newColorFormat? HexColor:RGB}}>{newColorFormat ? HexColor : RGB}</p>
+      <div className="ButtonContainer">
+      <button className="Hex buttons" onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? "red" : null }}> Hex </button>
+      <button className="RGB buttons" onClick={ColorFormat} style={{ backgroundColor: newColorFormat ? null : "red" }}>RGB</button>
+      <button className="ChangeColor buttons" onClick={newColorFormat? HexC : RGBC }>Change Color</button>
+      </div> 
+    
     </div>
   );
 };
