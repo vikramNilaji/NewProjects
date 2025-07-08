@@ -14,8 +14,9 @@
   font-size: xx-large;
   border-radius: 30px;
   transition-property: background-color;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+ 
 }
 .ButtonContainer {
   display: flex;
