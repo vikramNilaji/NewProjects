@@ -42,10 +42,7 @@ const RandomColors = () => {
   setColor(RGBColor())
  }
  }
-
  
-
-  
   return (
     <div>
       <div  style={{ border: "2px solid black", height: "100px", width: "100px", backgroundColor: color }}>
