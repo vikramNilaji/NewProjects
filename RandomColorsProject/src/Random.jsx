@@ -34,7 +34,7 @@ const Random = () => {
       "C",
       "D",
       "E",
-      "F",
+      "F"
     ];
     let Hex = "#";
     for (let i = 0; i < 6; i++) {
