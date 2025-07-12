@@ -1,0 +1,21 @@
+.ImageContainer{
+  position: relative;
+}
+.Images{
+  position: absolute;
+}
+.Buttons{
+  position: relative;
+  top:310px;
+  margin-left: 5px;
+}
+.current-slide{
+   border-radius: 0.5rem;
+    box-shadow: 0px 0px 7px #666;
+    width: 100%;
+    height: 100%;
+}
+
+.hideCurrentSlide{
+  display: none;
+}
