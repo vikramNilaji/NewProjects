@@ -4,7 +4,7 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
   const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [currentSlide,setCurrentSlide]=useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   async function FetchingData(getUrl) {
     try {
@@ -30,13 +30,11 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
     FetchingData(url);
   }, [url]);
 
-  function LeftSide(){
-    setCurrentSlide(currentSlide===0? image.length-1:currentSlide-1)
-
+  function LeftSide() {
+    setCurrentSlide(currentSlide === 0 ? image.length - 1 : currentSlide - 1);
   }
-  function RightSide(){
-    setCurrentSlide(currentSlide === image.length-1? 0: currentSlide+1 )
-
+  function RightSide() {
+    setCurrentSlide(currentSlide === image.length - 1 ? 0 : currentSlide + 1);
   }
 
   if (loading) {
@@ -55,7 +53,11 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
                     src={items.download_url}
                     alt="images"
                     style={{ height: "300px", width: "300px" }}
-                    className={currentSlide === index? "currentSlide":"hideCurrentSlide"  }
+                    className={
+                      currentSlide === index
+                        ? "currentSlide"
+                        : "hideCurrentSlide"
+                    }
                   />
                 </div>
               );
@@ -64,23 +66,26 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
         {image.length
           ? image.map((_, index) => {
               return (
-                <button onClick={()=> setCurrentSlide(index)} 
-                // className={currentSlide === index? "currentSlide":"hideCurrentSlide"  }
+                <button
+                  onClick={() => setCurrentSlide(index)}
+                  // className={currentSlide === index? "currentSlide":"hideCurrentSlide"  }
                   className="Buttons"
                   style={{ backgroundColor: "red" }}
                   key={index}
                 >
-                  {index+1}
+                  {index + 1}
                 </button>
               );
             })
           : null}
-          <div>  
-          <button onClick={LeftSide} className="Buttons">Left</button>
-          <button onClick={RightSide} className="Buttons">Right</button>
-           </div>
-
-        
+        <div>
+          <button onClick={LeftSide} className="Buttons">
+            Left
+          </button>
+          <button onClick={RightSide} className="Buttons">
+            Right
+          </button>
+        </div>
       </div>
     );
   }
