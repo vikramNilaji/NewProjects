@@ -3,8 +3,13 @@ import "./Random.css";
 import { useState } from "react";
 
 const Random = () => {
-  const [color, setColor] = useState("#fffff")
-  const [value,setValue]=useState(true)
+  const [color, setColor] = useState("#fffff");
+  // const [value, setValue] = useState(true);
+  const [ColorButton, setColorButton] = useState(true);
+
+  function ButtonChanger() {
+    setColorButton(!ColorButton);
+  }
   function HandleRandomHexNumbers(length) {
     return Math.floor(Math.random() * length);
   }
@@ -46,24 +51,20 @@ const Random = () => {
     return a;
   }
 
-  function HexButton(){
-    setValue(true)
-  }
+  // function HexButton() {
+  //   setValue(true);
+  // }
 
-  function RGBButton(){
-    setValue(false)
-  }
+  // function RGBButton() {
+  //   setValue(false);
+  // }
 
-
-  function ChangeFormat(){
-
-    if(value){
-      setColor(RandomHexNumbers())
+  function ChangeFormat() {
+    if (ColorButton) {
+      setColor(RandomHexNumbers());
+    } else {
+      setColor(RandomRGBColor());
     }
-    else{
-      setColor(RandomRGBColor())
-    }
-
   }
 
   return (
@@ -72,13 +73,14 @@ const Random = () => {
         className="Color"
         style={{ backgroundColor: color, borderColor: "#abcdef" }}
       >
-
         {color}
       </div>
       <div className="ButtonContainer">
-        <button className="buttons" onClick={HexButton}>Hex Color Format</button>
-        <button className="buttons" onClick={RGBButton}>RGB Color Format</button>
-        <button className="buttons"  onClick={ChangeFormat}>
+        <button className="buttons" onClick={ButtonChanger}>
+          {ColorButton ?  " RGB Color Format" : "Hex Color Format"}
+        </button>
+
+        <button className="buttons" onClick={ChangeFormat}>
           Change Color
         </button>
       </div>

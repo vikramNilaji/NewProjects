@@ -4,11 +4,13 @@ import './index.css'
 import App from './App.jsx'
 import NewApp from './NewApp.jsx'
 import Random from "./Random.jsx"
+import RandomColor from './RandomColor.jsx'
 
 createRoot(document.getElementById('root')).render(
   <>
     {/* <App />
     <NewApp/> */}
-    <Random/>
+     <Random/> 
+    <RandomColor/>
   </>
 )
