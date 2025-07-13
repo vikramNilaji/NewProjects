@@ -1,21 +1,33 @@
-.ImageContainer{
+.ImageContainer {
   position: relative;
 }
-.Images{
+.Images {
   position: absolute;
 }
-.Buttons{
+.Buttons {
   position: relative;
-  top:310px;
+  top: 310px;
   margin-left: 5px;
 }
-.current-slide{
-   border-radius: 0.5rem;
-    box-shadow: 0px 0px 7px #666;
-    width: 100%;
-    height: 100%;
+.currentSlide {
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px #666;
+  width: 100%;
+  height: 100%;
 }
 
-.hideCurrentSlide{
+.hideCurrentSlide {
   display: none;
+}
+
+.currentIndicator {
+  position: relative;
+  top: 310px;
+  background-color: red;
+}
+
+.hideCurrentIndicator {
+  position: relative;
+  top: 310px;
+  background-color: rgb(95, 173, 21);
 }

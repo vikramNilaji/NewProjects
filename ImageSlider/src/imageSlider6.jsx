@@ -28,7 +28,7 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
 
   useEffect(() => {
     FetchingData(url);
-  }, [url]);
+  }, [url,page,limit]);
 
   function LeftSide() {
     setCurrentSlide(currentSlide === 0 ? image.length - 1 : currentSlide - 1);
@@ -69,8 +69,8 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
                 <button
                   onClick={() => setCurrentSlide(index)}
                   // className={currentSlide === index? "currentSlide":"hideCurrentSlide"  }
-                  className="Buttons"
-                  style={{ backgroundColor: "red" }}
+                  className={currentSlide===index? "currentIndicator":"hideCurrentIndicator"}
+                  // style={{ backgroundColor: "red" }}
                   key={index}
                 >
                   {index + 1}
