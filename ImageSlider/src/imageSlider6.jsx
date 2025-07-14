@@ -91,4 +91,4 @@ const ImageSlider6 = ({ url, page = 1, limit = 10 }) => {
   }
 };
 
-export default ImageSlider6;
+export default ImageSlider6 ;
