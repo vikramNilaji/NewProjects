@@ -30,7 +30,7 @@ const StarRating = () => {
             onMouseEnter={() => MouseEnter(NewIndex)}
             onClick={() => StarButton(NewIndex)}
             className={`stars ${
-              NewIndex <= (hover || selected) ? "active" : null
+              NewIndex <= (hover || selected) ? "active"   : null
             }`}
           >
             <FaStar />{"*"}
