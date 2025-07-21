@@ -8,5 +8,8 @@ import NewStarRating from "./NewStarRating.jsx";
 import StarRating from "./StarRating.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>{/* <App /> */}</StrictMode>
+  <StrictMode>
+    {" "}
+    <NewStarRating /> <StarRating />{" "}
+  </StrictMode>
 );

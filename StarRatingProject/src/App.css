@@ -1,7 +1,19 @@
-.active{
+.starContainer{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: row;
+  
+}
+.active11{
+  
   color: yellow;
+
 }
 
-.inactive{
+.inactive11{
   color:black
+}
+.Star{
+font-size: 50px;
 }
