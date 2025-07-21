@@ -58,21 +58,9 @@ const App = () => {
       <>
         {[...Array(5)].map((_, index) => {
           index = index + 1;
-          return (
-            <FaStar
-              key={index}
-              size={50}
-              onClick={() => ClickHandler(index)}
-              onMouseEnter={() => HoverHandler(index)}
-              onMouseLeave={() => LeaveHandler(index)}
-              className={index <= rating ? "active" : "inactive"}
-            >
-              {" "}
-            </FaStar>
-          );
+        
 
-          index = index + 1;
-          return (
+              return (
             <FaStar
               key={index}
               size={50}
@@ -82,7 +70,7 @@ const App = () => {
                 color: `${index <= rating || number ? "red" : "black"}`,
               }}
             ></FaStar>
-          );
+             }
         
       </>)
     
