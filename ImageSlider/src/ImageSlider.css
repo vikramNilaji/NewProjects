@@ -1,0 +1,40 @@
+.Container{
+  display: flex;
+  position: relative;
+}
+
+.Images img{
+  position: absolute;
+  height: 200px;
+  width: 300px;
+}
+.Buttons{
+  display: flex;
+  position: absolute;
+  top: 250px;
+  column-gap: 200px;
+  padding-left:13px
+}
+.NosContainer{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  top: 210px;
+  column-gap: 5px;
+}
+.EnablePic{
+  height: 200px;
+  width: 300px;
+}
+.DisablePic{
+  display: none;
+}
+.EnableIndicator{
+  background-color: red;
+  color: rgb(183, 189, 189);
+  
+}
+.DisableIndicator{
+ background-color: rgb(21, 189, 15);
+ color: rgb(221, 221, 226);
+}

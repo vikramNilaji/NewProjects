@@ -1,90 +1,90 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import React, { useState, useEffect } from "react";
+import "./ImageSlider.css";
 
-const ImageSlider1 = ({ url, limit = 5, page = 1 }) => {
-  const [images, setImages] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [loading, setLoading] = useState(false);
+const ImageSlider1 = () => {
+  const [loading, setLoading] = useState(true);
+  const [newError, setNewError] = useState("");
+  const [newData, setNewData] = useState("");
+  const [selectedPic,setSelectedPic]=useState(0)
 
-  const FetchImages = async (getUrl) => {
+  async function FetchData() {
     try {
       setLoading(true);
-      const response = await fetch(`${getUrl}?page=${page}&limit=${limit}`);
-      const JsonData = await response.json();
+      let response = await fetch(
+        `https://picsum.photos/v2/list?page=1&limit=10`
+      );
+      let JsonData = await response.json();
       if (JsonData) {
-        setImages(JsonData);
         setLoading(false);
+        setNewData(JsonData);
+      } else {
+        setLoading(false);
+        console.log("Error");
+        setNewError("Error Occured");
       }
-    } catch (e) {
-      setErrorMsg(e.message);
-      setLoading(false);
+      console.log(JsonData);
+    } catch (error) {
+      setLoading(false)
+      console.log(error.message);
+       setNewError(`${error.message}`);
     }
-  };
-  function handlePrevious() {
-    setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
   }
 
-  function handleNext() {
-    setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
+  function MoveLeft() {
+    setSelectedPic(selectedPic === 0 ? newData.length-1: selectedPic-1  )
+  }
+
+  function MoveRight() {
+    setSelectedPic(selectedPic === newData.length-1 ? 0: selectedPic+1)
+  }
+  function ButtonSelector(currentIndex){
+    setSelectedPic(currentIndex)
   }
 
   useEffect(() => {
-    if (url !== 0) {
-      FetchImages(url);
-    }
-  }, [url]);
-
-  console.log(images);
+    FetchData();
+  }, []);
 
   if (loading) {
-    return <h1>Content Loading... Please wait</h1>;
-  } else if (errorMsg) {
-    return <h1>Error Occured : {errorMsg}</h1>;
+    return <div> Loading... Please wait</div>;
+  }
+
+  if (newError) {
+    return <div> Error Occurred {newError}</div>;
   } else {
     return (
-      <div className="container">
-        <BsArrowLeftCircleFill
-          onClick={handlePrevious}
-          className=" arrow arrow-left"
-        />
-
-        {images && images.length
-          ? images.map((imageItem, index) => {
-              return (
-                <img
-                  key={imageItem.id}
-                  src={imageItem.download_url}
-                  alt={imageItem.download_url}
-                  className={
-                    currentSlide === index
-                      ? "current-image"
-                      : " hide-current-image"
-                  }
-                />
-              );
-            })
-          : null}
-        <BsArrowRightCircleFill
-          onClick={handleNext}
-          className="arrow arrow-right"
-        />
-        <span className="circle-indicators">
-          {images && images.length
-            ? images.map((_, index) => (
-                <button
-                  key={index}
-                  className={
-                    currentSlide === index
-                      ? "current-indicator"
-                      : "current-indicator inactive-indicator"
-                  }
-                  onClick={() => setCurrentSlide(index)}
-                />
-              ))
+      <div>
+        <div className="Container">
+          {newData && newData.length
+            ? newData.map((items, index) => {
+                return (
+                  <div key={index} className="Images">
+                    {" "}
+                    <img
+                      src={items.download_url}
+                      alt={items.download_url}
+                      className={selectedPic === index? "EnablePic":"DisablePic" }
+                    />
+                  </div>
+                );
+              })
             : null}
-        </span>
+        </div>
+        <div className="NosContainer">
+          {newData && newData.length
+            ? newData.map((_, index) => {
+                return (
+                  
+                    <button onClick={()=>ButtonSelector(index)} key={index} className= {`${selectedPic === index? "EnableIndicator" : "DisableIndicator"}`}>{index+1} </button>
+                  
+                );
+              })
+            : null}
+        </div>
+        <div className="Buttons">
+          <button onClick={MoveLeft}> Left</button>
+          <button onClick={MoveRight}> Right</button>
+        </div>
       </div>
     );
   }
