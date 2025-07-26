@@ -1,19 +1,37 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function OutputHandle(){
+    const op={
+        email:email,
+        password:password
+    }
+    console.log("output",op)
+  }
 
-    const [value1, setValue1] = useState("")
-    const [text,setText]=useState("")
-    return (
-        <div>
+  return (
+    <div>
+    <div>
+      <p>Email</p>
+      <input
+        onChange={(e) => setEmail(e.target.value)}
+        type="text"
+        value={email}
+      />
+       </div>
+       <div>
+      <p>Password</p>
+      <input
+        onChange={(e) => setPassword(e.target.value)}
+        type="password"
+        value={password}
+      /> </div>
+      <button onClick={OutputHandle}>Login</button>
+    </div>
+  );
+};
 
-            <input onChange={(e) => setValue1(e.target.value)} type="text" value={value1} />
-            <button onClick={()=>setText(value1)}>Click Here</button>
-            <p>{text}</p>
-
-        </div>
-    )
-}
-
-export default Login
+export default Login;
