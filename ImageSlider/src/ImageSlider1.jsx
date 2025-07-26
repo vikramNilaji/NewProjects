@@ -4,7 +4,7 @@ import "./ImageSlider.css";
 const ImageSlider1 = () => {
   const [loading, setLoading] = useState(true);
   const [newError, setNewError] = useState("");
-  const [newData, setNewData] = useState("");
+  const [newData, setNewData] = useState([]);
   const [selectedPic,setSelectedPic]=useState(0)
 
   async function FetchData() {
