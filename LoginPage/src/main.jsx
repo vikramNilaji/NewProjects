@@ -4,12 +4,14 @@ import './index.css'
 import App from './App.jsx'
 import Login from './Login.jsx'
 import ApiExample from './ApiExample.jsx'
+import LoginApi from './LoginApi.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App /> */}
     {/* <LoginPage/> */}
     {/* <Login/> */}
-    <ApiExample/>
+    {/* <ApiExample/> */}
+    <LoginApi/>
   </StrictMode>,
 )
