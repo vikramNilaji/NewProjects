@@ -1,107 +1,61 @@
-// import React from "react";
-// import { useEffect, useState } from "react";
-
-// const ApiExample = () => {
-//   const [users, setUsers] = useState([]);
-
-//   useEffect(() => {
-//      fetch("https://jsonplaceholder.typicode.com/users")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         console.log("Fetched Data :", data);
-//         setUsers(data);
-//       });
-
-//     console.log("j");
-//   }, []);
-
-//   return (
-//     <div>
-//       <h2>Users List</h2>
-//       <ul>
-//         {users.map((user) => {
-//           return <li key={user.id}>{user.name}</li>;
-//         })}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default ApiExample;
-
-// import { useState, useEffect } from "react";
-
-// const ApiExample = () => {
-//   const [users, setUsers] = useState([]);
-
-//   useEffect(() => {
-//     fetch("https://jsonplaceholder.typicode.com/users")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setUsers(data);
-//         console.log(data);
-//       })
-//       .catch((err) => {
-//         console.log(err.message);
-//       });
-//   }, []);
-//   return (
-//     <div>
-//       {users && users.length
-//         ? users.map((user) => {
-//             return (
-//               <ul key={user.id}>
-//                 {
-//                   <li>
-//                     {user.username} and Email id is: {user.email}
-//                   </li>
-//                 }
-//               </ul>
-//             );
-//           })
-//         : null}
-//     </div>
-//   );
-// };
-
-// export default ApiExample;
-
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 
 const ApiExample = () => {
-  const [users, setUsers] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [response, setResponse] = useState(null);
 
-  async function FetchData() {
+  async function HandleSubmit(e) {
+    e.preventDefault();
+    const userData = {
+      name: name,
+      email: email,
+    };
+
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const jsonData = await response.json();
-      setUsers(jsonData);
-      console.log(jsonData)
-    } catch (err) {
-      console.log(err.message);
+      const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      const result = await res.json();
+      setResponse(result);
+    } catch (error) {
+      console.error("Error:", error);
     }
   }
-  useEffect(() => {
-    FetchData();
-  }, []);
+
   return (
     <div>
-      {users && users.length
-        ? users.map((user) => {
-            return (
-              <ul key={user.id}>
-                {" "}
-                {
-                  <li>
-                    {user.name} {user.username} {user.email}
-                  </li>
-                }{" "}
-              </ul>
-            );
-          })
-        : null}
+      <h2>Add New User</h2>
+      <form action="" onSubmit={HandleSubmit}>
+        <input
+          type="text"
+          placeholder="Enteer name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <br />
+        <input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+        />
+        <br/>
+        <button type="submit">Submit</button>
+      </form>
+
+      {response && ( 
+        <div>
+          <h4> Server Response:</h4>
+          <pre>{JSON.stringify(response,null,2)}</pre>
+        </div>
+      )}
     </div>
   );
 };

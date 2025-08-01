@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Login from './Login.jsx'
 import ApiExample from './ApiExample.jsx'
+import PreventDefault from './PreventDefault.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,5 +12,6 @@ createRoot(document.getElementById('root')).render(
     {/* <LoginPage/> */}
     {/* <Login/> */}
     <ApiExample/>
+    <PreventDefault/>
   </StrictMode>,
 )
