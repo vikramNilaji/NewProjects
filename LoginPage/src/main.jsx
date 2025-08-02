@@ -15,10 +15,10 @@ createRoot(document.getElementById('root')).render(
     {/* <Login/> */}
 
     <ApiExample/>
-    <PreventDefault/>
+    {/* <PreventDefault/> */}
 
     {/* <ApiExample/> */}
-    <LoginApi/>
+    {/* <LoginApi/> */}
 
   </StrictMode>,
 )
