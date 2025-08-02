@@ -17,7 +17,7 @@ const ApiExample = () => {
       <div>
         <input onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="Enter email Address" value={email} />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Submit</button >
       </form>
     </div>
   );
