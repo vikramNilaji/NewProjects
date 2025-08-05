@@ -7,6 +7,12 @@ const ApiExample = () => {
 
   async function FetchData(e) {
     e.preventDefault();
+
+    const ProfileData={
+      name:name,
+      age:age,
+      email:email
+    }
     try {
 
       const response=await fetch("https://jsonplaceholder.typicode.com/users",{
