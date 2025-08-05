@@ -4,30 +4,42 @@ const ApiExample = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
+  const [data, setData] = useState();
 
   async function FetchData(e) {
     e.preventDefault();
 
-    const ProfileData={
-      name:name,
-      age:age,
-      email:email
-    }
+    const ProfileData = {
+      name: name,
+      age: age,
+      email: email,
+    };
     try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users",
+        {
+          method: "POST",
+         headers: { "Content-Type": "application/json" },
 
-      const response=await fetch("https://jsonplaceholder.typicode.com/users",{
-        method:{}
-      } )
-      
+          body: JSON.stringify(ProfileData),
+        }
+      );
+
+      const JsonData = await response.json();
+      setData(JsonData);
     } catch (error) {
-      console.log(error.message)
-      
+      console.log(error.message);
     }
   }
 
   return (
     <div>
-      <form action="" onSubmit={() => {}}>
+      <form
+        action=""
+        onSubmit={(e) => {
+          FetchData(e);
+        }}
+      >
         <div>
           <input
             onChange={(e) => setName(e.target.value)}
@@ -52,8 +64,9 @@ const ApiExample = () => {
             value={email}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" >Submit</button>
       </form>
+      {data ? ( <div>{JSON.stringify(data)}</div>) :null }
     </div>
   );
 };
@@ -123,3 +136,4 @@ export default ApiExample;
 // };
 
 // export default ApiExample;
+
