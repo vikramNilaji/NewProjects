@@ -5,19 +5,48 @@ const ApiExample = () => {
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
 
+  async function FetchData(e) {
+    e.preventDefault();
+    try {
+
+      const response=await fetch("https://jsonplaceholder.typicode.com/users",{
+        method:{}
+      } )
+      
+    } catch (error) {
+      console.log(error.message)
+      
+    }
+  }
+
   return (
     <div>
-    <form action="" onSubmit={()=>{}}>
-      <div>
-        <input onChange={(e)=>setName(e.target.value)} type="text" placeholder="Enter name" value={name} />
-      </div>
-      <div>
-        <input onChange={(e)=>setAge(e.target.value)} type="text" placeholder="Enter Age"  value={age}/>
-      </div>
-      <div>
-        <input onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="Enter email Address" value={email} />
-      </div>
-      <button type="submit">Submit</button >
+      <form action="" onSubmit={() => {}}>
+        <div>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            placeholder="Enter name"
+            value={name}
+          />
+        </div>
+        <div>
+          <input
+            onChange={(e) => setAge(e.target.value)}
+            type="text"
+            placeholder="Enter Age"
+            value={age}
+          />
+        </div>
+        <div>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Enter email Address"
+            value={email}
+          />
+        </div>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
