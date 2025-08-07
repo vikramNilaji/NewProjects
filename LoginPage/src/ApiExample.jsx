@@ -1,77 +1,77 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const ApiExample = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [data, setData] = useState();
+// const ApiExample = () => {
+//   const [name, setName] = useState("");
+//   const [age, setAge] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [data, setData] = useState();
 
-  async function FetchData(e) {
-    e.preventDefault();
+//   async function FetchData(e) {
+//     e.preventDefault();
 
-    const ProfileData = {
-      name: name,
-      age: age,
-      email: email,
-    };
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          method: "POST",
-         headers: { "Content-Type": "application/json" },
+//     const ProfileData = {
+//       name: name,
+//       age: age,
+//       email: email,
+//     };
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users",
+//         {
+//           method: "POST",
+//          headers: { "Content-Type": "application/json" },
 
-          body: JSON.stringify(ProfileData),
-        }
-      );
+//           body: JSON.stringify(ProfileData),
+//         }
+//       );
 
-      const JsonData = await response.json();
-      setData(JsonData);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+//       const JsonData = await response.json();
+//       setData(JsonData);
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   }
 
-  return (
-    <div>
-      <form
-        action=""
-        onSubmit={(e) => {
-          FetchData(e);
-        }}
-      >
-        <div>
-          <input
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            placeholder="Enter name"
-            value={name}
-          />
-        </div>
-        <div>
-          <input
-            onChange={(e) => setAge(e.target.value)}
-            type="text"
-            placeholder="Enter Age"
-            value={age}
-          />
-        </div>
-        <div>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Enter email Address"
-            value={email}
-          />
-        </div>
-        <button type="submit" >Submit</button>
-      </form>
-      {data ? ( <div>{JSON.stringify(data)}</div>) :null }
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <form
+//         action=""
+//         onSubmit={(e) => {
+//           FetchData(e);
+//         }}
+//       >
+//         <div>
+//           <input
+//             onChange={(e) => setName(e.target.value)}
+//             type="text"
+//             placeholder="Enter name"
+//             value={name}
+//           />
+//         </div>
+//         <div>
+//           <input
+//             onChange={(e) => setAge(e.target.value)}
+//             type="text"
+//             placeholder="Enter Age"
+//             value={age}
+//           />
+//         </div>
+//         <div>
+//           <input
+//             onChange={(e) => setEmail(e.target.value)}
+//             type="email"
+//             placeholder="Enter email Address"
+//             value={email}
+//           />
+//         </div>
+//         <button type="submit" >Submit</button>
+//       </form>
+//       {data ? ( <div>{JSON.stringify(data)}</div>) :null }
+//     </div>
+//   );
+// };
 
-export default ApiExample;
+// export default ApiExample;
 
 // const ApiExample = () => {
 //   const [email, setEmail] = useState('');
@@ -137,3 +137,69 @@ export default ApiExample;
 
 // export default ApiExample;
 
+import { useState } from "react";
+
+const ApiExample = () => {
+  const [name, setname] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [newData, setNewData] = useState(null);
+
+  const dataList = {
+    name: name,
+    email: email,
+    age: age,
+  };
+
+  async function FetchData(e) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dataList),
+        }
+      );
+      const JsonData = await response.json();
+      setNewData(JsonData);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  return (
+    <div>
+
+    <h3>vikram vik.nilaji@g.com 23</h3>
+      <form onSubmit={FetchData} action="">
+        <input
+          onChange={(e) => setname(e.target.value)}
+          placeholder="Enter name"
+          value={name}
+          type="text"
+        />
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter Email"
+          value={email}
+          type="text"
+        />
+        <input
+          onChange={(e) => setAge(e.target.value)}
+          placeholder="Enter Age"
+          value={age}
+          type="text"
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      {newData? <div> {JSON.stringify(newData)} </div> :null}
+    </div>
+  );
+};
+
+export default ApiExample;
