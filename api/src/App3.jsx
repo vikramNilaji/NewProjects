@@ -96,72 +96,38 @@ import React, { useState, useEffect } from "react";
 const App3 = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [newData, setNewData] = useState();
-  const [newData1, setNewData1] = useState([]);
-  const [users,setUsers]=useState(newData1)
+  const [newName, setNewName] = useState("");
+  const [newEmail, setNewEmail] = useState("");
 
-  useEffect(() => {
-    async function fetchData1() {
-      try {
-        const response1 = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        const jsonData1 = await response1.json();
-        setNewData1(jsonData1);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-
-    fetchData1();
-  }, []);
-
-  async function fetchData2(e) {
-    e.preventDefault();
-    const userData = { name: name, email: email };
-    const response = await fetch("https://jsonplaceholder.typicode.com/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
-    const jsonData = await response.json();
-    setNewData(jsonData);
-    setUsers([...users,newData])
+  function SubmitForm() {
+    setNewName(name)
+    setNewEmail(email)
   }
+
   return (
     <>
       <div>
-        <ul>
-          {newData1.map((user) => (
-            <li key={user.id}>
-              {user.name} - {user.email}
-            </li>
-          ))}
-        </ul>
+        <input autoComplete="on"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          value={email}
+          type="text"
+          placeholder="email"
+        />
+        <input autoComplete="on"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          value={name}
+          type="text"
+          placeholder="name"
+        />
+        <button onClick={SubmitForm}>Submit</button>
+        <div>{newEmail} {newName}</div>
       </div>
-      <div>
-        <form action="" onSubmit={fetchData2}>
-          <input
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            value={name}
-            type="text"
-          />
-          <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            value={email}
-            type="email"
-          />
-          <button type="submit">Click Here</button>
-        </form>
-      </div>
-
-      <div>{JSON.stringify(newData)}</div>
-      <div>{users}</div>
     </>
   );
 };
+
 export default App3;
